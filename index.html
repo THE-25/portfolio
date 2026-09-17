@@ -1,0 +1,2811 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohamed Amine Djouama — Freelance Video Editor</title>
+  <meta name="description" content="Freelance Video Editor based in Algeria crafting clean, modern reels, ads, and visuals for creators and emerging businesses." />
+  <!-- Favicon & Brand Icon -->
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+
+  <!-- Open Graph / Social Sharing Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mohamed Amine Djouama — Freelance Video Editor" />
+  <meta property="og:description" content="Freelance Video Editor based in Algeria crafting clean, modern reels, ads, and visuals for creators and emerging businesses." />
+  <meta property="og:site_name" content="Mohamed Amine Djouama Portfolio" />
+  <meta property="og:image" content="logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mohamed Amine Djouama — Freelance Video Editor" />
+  <meta name="twitter:description" content="Crafting clean, modern visuals from your raw footage." />
+  <meta name="twitter:image" content="logo.png" />
+
+  <!-- Google Fonts: Space Grotesk, Syne & Tajawal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@500;700;800&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+            display: ['Syne', 'sans-serif'],
+            arabic: ['Tajawal', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              black: '#07080b',
+              surface: '#0d0f17',
+              card: '#121522',
+              cardHover: '#181d2f',
+              border: 'rgba(255, 255, 255, 0.08)',
+              borderActive: 'rgba(99, 102, 241, 0.4)',
+            },
+            accent: {
+              indigo: '#6366f1',
+              violet: '#8b5cf6',
+              cyan: '#06b6d4',
+              emerald: '#10b981',
+              rose: '#f43f5e',
+              amber: '#f59e0b',
+            }
+          },
+          boxShadow: {
+            'glow-indigo': '0 0 30px -5px rgba(99, 102, 241, 0.3)',
+            'glow-emerald': '0 0 30px -5px rgba(16, 185, 129, 0.3)',
+            'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.4)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #07080b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1f2438;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6366f1;
+    }
+
+    /* Ambient Film Grain Overlay */
+    .film-grain {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    /* Subtle Scanline Overlay */
+    .scanlines {
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0),
+        rgba(255,255,255,0) 50%,
+        rgba(0, 0, 0, 0.25) 50%,
+        rgba(0, 0, 0, 0.25)
+      );
+      background-size: 100% 4px;
+    }
+
+    /* Glassmorphism Classes */
+    .glass-panel {
+      background: rgba(13, 15, 23, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-card {
+      background: rgba(18, 21, 34, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(99, 102, 241, 0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px -15px rgba(0, 0, 0, 0.6), 0 0 25px -5px rgba(99, 102, 241, 0.15);
+    }
+
+    /* Button Hover Sheen Sweep */
+    .btn-sheen {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-sheen::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(
+        60deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        transparent
+      );
+      transform: rotate(25deg);
+      transition: all 0.6s ease;
+    }
+    .btn-sheen:hover::after {
+      left: 140%;
+    }
+
+    /* Keyframe Animations */
+    @keyframes pulseSlow {
+      0%, 100% { opacity: 0.35; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.04); }
+    }
+    .animate-pulse-slow {
+      animation: pulseSlow 8s ease-in-out infinite;
+    }
+
+    /* Staggered Slide-Up & Fade-In Animation for Projects */
+    @keyframes projectSlideUpFade {
+      0% {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-project-in {
+      animation: projectSlideUpFade 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes projectSlideDownFadeOut {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+    }
+    .animate-project-out {
+      animation: projectSlideDownFadeOut 0.24s cubic-bezier(0.4, 0, 1, 1) both;
+    }
+
+    #projects-grid {
+      overflow: hidden;
+      transition: max-height 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* RTL typography tweaks */
+    [dir="rtl"] {
+      font-family: 'Tajawal', sans-serif;
+    }
+    [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 {
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 800;
+    }
+
+    /* Light Theme Adaptive Overrides */
+    html:not(.dark) body {
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    html:not(.dark) .glass-panel {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    }
+    html:not(.dark) .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      color: #1e293b;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+    html:not(.dark) .glass-card:hover {
+      box-shadow: 0 16px 35px -10px rgba(99, 102, 241, 0.15);
+      border-color: rgba(99, 102, 241, 0.4);
+    }
+    html:not(.dark) .text-white {
+      color: #0f172a !important;
+    }
+    html:not(.dark) .text-slate-400 {
+      color: #64748b !important;
+    }
+    html:not(.dark) .text-slate-300 {
+      color: #334155 !important;
+    }
+    html:not(.dark) .text-slate-200 {
+      color: #1e293b !important;
+    }
+    html:not(.dark) .bg-white\/5 {
+      background-color: rgba(0, 0, 0, 0.05) !important;
+    }
+    html:not(.dark) .bg-white\/10 {
+      background-color: rgba(0, 0, 0, 0.08) !important;
+    }
+    html:not(.dark) .border-white\/5,
+    html:not(.dark) .border-white\/10 {
+      border-color: rgba(0, 0, 0, 0.08) !important;
+    }
+  </style>
+</head>
+
+<body class="bg-[#07080b] text-slate-200 antialiased selection:bg-indigo-600 selection:text-white min-h-screen relative overflow-x-hidden font-sans transition-colors duration-300">
+
+  <!-- Ambient Atmospheric Glows -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-indigo-900/20 rounded-full blur-[140px] animate-pulse-slow"></div>
+    <div class="absolute top-1/3 -left-48 w-[450px] h-[450px] bg-cyan-900/15 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-1/4 -right-48 w-[500px] h-[500px] bg-violet-900/15 rounded-full blur-[130px]"></div>
+    <div class="absolute inset-0 film-grain opacity-40"></div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="sticky top-0 z-50 w-full px-4 sm:px-6 lg:px-8 py-3.5 transition-all duration-300">
+    <div class="max-w-7xl mx-auto">
+      <div class="glass-panel rounded-2xl px-4 py-2.5 flex items-center justify-between shadow-glass">
+        
+        <!-- Logo / Name Badge -->
+        <a href="#hero" class="flex items-center gap-3 group focus:outline-none" aria-label="Home">
+          <div class="w-10 h-10 rounded-xl bg-black/60 border border-white/10 p-1 flex items-center justify-center shadow-glow-indigo transition-transform duration-300 group-hover:scale-105 overflow-hidden">
+            <img src="logo.png" alt="Mohamed Amine Logo" class="w-full h-full object-contain rounded-lg">
+          </div>
+          <div class="flex flex-col">
+            <span class="font-display font-bold text-white text-sm sm:text-base tracking-wide flex items-center gap-1.5" id="nav-person-name">
+              Mohamed Amine
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+            </span>
+            <span class="text-[10px] text-slate-400 uppercase tracking-widest font-mono" id="nav-role-badge">
+              Freelance Video Editor
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300">
+          <a href="#work" class="hover:text-white transition-colors duration-200" id="nav-link-work">Selected Work</a>
+          <a href="#services" class="hover:text-white transition-colors duration-200" id="nav-link-services">What I Edit</a>
+          <a href="#tools" class="hover:text-white transition-colors duration-200" id="nav-link-tools">Tools</a>
+          <a href="#process" class="hover:text-white transition-colors duration-200" id="nav-link-pipeline">Project Steps</a>
+          <a href="#about" class="hover:text-white transition-colors duration-200" id="nav-link-about">About</a>
+          <a href="#contact" class="hover:text-white transition-colors duration-200" id="nav-link-contact">Contact</a>
+        </nav>
+
+        <!-- Right Controls: Theme Toggle, Sound Toggle, Language Switcher -->
+        <div class="flex items-center gap-2.5">
+          
+          <!-- Theme Toggle (Dark / Light) -->
+          <button id="theme-toggle-btn" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-all text-xs flex items-center justify-center" title="Toggle Light/Dark Theme">
+            <!-- Sun Icon (for dark mode) -->
+            <svg id="theme-icon-sun" class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <!-- Moon Icon (for light mode) -->
+            <svg id="theme-icon-moon" class="w-4 h-4 text-indigo-500 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </button>
+
+          <!-- Audio Toggle Button -->
+          <button id="sound-toggle-btn" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-all text-xs flex items-center justify-center" title="Toggle Sound Design">
+            <svg id="sound-icon-on" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            </svg>
+            <svg id="sound-icon-off" class="w-4 h-4 hidden text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+            </svg>
+          </button>
+
+          <!-- Language Switcher (EN / AR) -->
+          <button id="lang-switch-btn" class="px-2.5 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-semibold text-slate-200 border border-white/10 hover:border-indigo-500/40 transition-all flex items-center gap-1.5">
+            <span class="text-indigo-400 font-mono">🌐</span>
+            <span id="lang-label">العربية</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="relative z-10 pt-12 sm:pt-16 pb-14 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+
+      <!-- Floating Brand Logo Emblem -->
+      <div class="inline-flex items-center justify-center mb-6">
+        <div class="relative group cursor-pointer">
+          <div class="absolute -inset-1.5 bg-gradient-to-r from-indigo-500 via-blue-500 to-violet-600 rounded-3xl blur-md opacity-40 group-hover:opacity-80 transition duration-500"></div>
+          <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-[#0d0f17]/90 border border-white/15 p-2 backdrop-blur-xl shadow-2xl flex items-center justify-center overflow-hidden">
+            <img src="logo.png" alt="Mohamed Amine Djouama Logo" class="w-full h-full object-contain filter drop-shadow group-hover:scale-105 transition-transform duration-300">
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/50 border border-indigo-500/20 text-indigo-300 text-xs font-mono mb-6 backdrop-blur-md">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span id="hero-badge-text">FREELANCE VIDEO EDITOR // ALGERIA</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold text-white tracking-tight leading-[1.15] mb-6" id="hero-headline">
+        Crafting clean, modern visuals from your raw footage.
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed mb-9" id="hero-subheadline">
+        Independent video editor based in Algeria. Helping creators, friends, and emerging brands turn raw clips and ideas into sharp reels, promos, and high-retention content.
+      </p>
+
+      <!-- Primary Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="#work" class="btn-sheen inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white text-slate-900 font-semibold text-sm hover:bg-slate-100 transition-all shadow-lg hover:shadow-white/10" id="hero-btn-work">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <span>View My Work</span>
+        </a>
+
+        <a href="#contact" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold text-sm border border-white/10 hover:border-indigo-500/40 transition-all" id="hero-btn-contact">
+          <svg class="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+          <span>Let's Work Together</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Selected Work Section -->
+  <section id="work" class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header (Clean without subtext) -->
+      <div class="mb-10">
+        <span class="text-xs font-mono text-indigo-400 tracking-wider uppercase" id="work-meta">// SELECTED PROJECTS</span>
+        <h2 class="text-2xl sm:text-4xl font-display font-bold text-white mt-1" id="work-title">Selected Work</h2>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="flex flex-wrap items-center gap-2 mb-8" id="work-filter-container">
+        <button class="filter-pill px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all bg-indigo-600 text-white" data-filter="all" id="filter-btn-all">All</button>
+        <button class="filter-pill px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all bg-white/5 hover:bg-white/10 text-slate-300" data-filter="reels" id="filter-btn-reels">Reels & Shorts</button>
+        <button class="filter-pill px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all bg-white/5 hover:bg-white/10 text-slate-300" data-filter="ads" id="filter-btn-ads">Social Ads</button>
+        <button class="filter-pill px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all bg-white/5 hover:bg-white/10 text-slate-300" data-filter="motion" id="filter-btn-motion">Motion & Demos</button>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+        <!-- اعلان سوشيال ميديا لجيميني برو -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/5 flex flex-col group cursor-pointer">
+          <div class="relative aspect-video bg-slate-900 flex items-center justify-center overflow-hidden">
+            <!-- Blurred Video Preview Poster -->
+            <video src="اعلان سوشيال ميديا  لجيميني برو.mp4#t=0.5" preload="metadata" class="absolute inset-0 w-full h-full object-cover filter blur-md scale-110 opacity-40 pointer-events-none"></video>
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 scanlines opacity-20"></div>
+
+            <span class="absolute top-3 left-3 rtl:left-auto rtl:right-3 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-[10px] font-mono text-indigo-300 border border-white/10 z-10 pointer-events-none">
+              Social Ad
+            </span>
+
+            <!-- Center Click to Watch CTA -->
+            <div class="relative z-10 flex flex-col items-center gap-2 transition-transform duration-300 group-hover:scale-105">
+              <div class="w-12 h-12 rounded-full bg-indigo-600/90 group-hover:bg-indigo-500 text-white flex items-center justify-center shadow-glow-indigo transition-all">
+                <svg class="w-5 h-5 fill-current ml-0.5 rtl:ml-0 rtl:mr-0.5" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-[11px] font-medium text-white border border-white/20 shadow-lg tracking-wide">
+                اضغط هنا للمشاهدة
+              </span>
+            </div>
+
+            <div class="absolute bottom-2 right-2 rtl:right-auto rtl:left-2 text-[10px] font-mono text-slate-300 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded z-10">
+              00:28
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-white group-hover:text-indigo-400 transition-colors mb-2">اعلان سوشيال ميديا  لجيميني برو</h3>
+              <p class="text-xs text-slate-400 leading-relaxed mb-4">إعلان فيديو احترافي لسوشيال ميديا لجيميني برو بموشن جرافيك جذاب، وتحريك سلس للواجهات مع إيقاع عصري متقن.</p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
+              <span>CapCut • Figma • Rive</span>
+              <span class="text-indigo-400 flex items-center gap-1 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                معاينة ←
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- فيديو ترحيبي لدورة كاب كات بيسي -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/5 flex flex-col group cursor-pointer">
+          <div class="relative aspect-video bg-slate-900 flex items-center justify-center overflow-hidden">
+            <!-- Blurred Video Preview Poster -->
+            <video src="جزء من الفيديو ترحيبي لدورة كاب كات بيسي .mp4#t=0.5" preload="metadata" class="absolute inset-0 w-full h-full object-cover filter blur-md scale-110 opacity-40 pointer-events-none"></video>
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 scanlines opacity-20"></div>
+
+            <span class="absolute top-3 left-3 rtl:left-auto rtl:right-3 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-[10px] font-mono text-indigo-300 border border-white/10 z-10 pointer-events-none">
+              إعلان سوشيال • فيديو بسيط
+            </span>
+
+            <!-- Center Click to Watch CTA -->
+            <div class="relative z-10 flex flex-col items-center gap-2 transition-transform duration-300 group-hover:scale-105">
+              <div class="w-12 h-12 rounded-full bg-indigo-600/90 group-hover:bg-indigo-500 text-white flex items-center justify-center shadow-glow-indigo transition-all">
+                <svg class="w-5 h-5 fill-current ml-0.5 rtl:ml-0 rtl:mr-0.5" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-[11px] font-medium text-white border border-white/20 shadow-lg tracking-wide">
+                اضغط هنا للمشاهدة
+              </span>
+            </div>
+
+            <div class="absolute bottom-2 right-2 rtl:right-auto rtl:left-2 text-[10px] font-mono text-slate-300 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded z-10">
+              00:37
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-white group-hover:text-indigo-400 transition-colors mb-2">فيديو ترحيبي لدورة CapCut PC — جزء من الفيديو الكامل</h3>
+              <p class="text-xs text-slate-400 leading-relaxed mb-4">فيديو بسيط ومميز يعرض مقدمة ترحيبية لدورة CapCut على الكمبيوتر (PC)، بتنسيق مرئي جذاب، تحريك نصوص أنيق، وتصميم متقن بالدمج بين CapCut و Photoshop.</p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
+              <span>CapCut • Photoshop</span>
+              <span class="text-indigo-400 flex items-center gap-1 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                معاينة ←
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- فيديو من سلسلة أخطاء لاعبي كاليستنكس حقيقة تمرين Simon Ata -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/5 flex flex-col group cursor-pointer">
+          <div class="relative aspect-video bg-slate-900 flex items-center justify-center overflow-hidden">
+            <!-- Blurred Video Preview Poster -->
+            <video src="فيديو من سلسلة أخطاء المحترفين حقيقة تمرين Simon Ata.mp4#t=0.5" preload="metadata" class="absolute inset-0 w-full h-full object-cover filter blur-md scale-110 opacity-40 pointer-events-none"></video>
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 scanlines opacity-20"></div>
+
+            <span class="absolute top-3 left-3 rtl:left-auto rtl:right-3 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-[10px] font-mono text-indigo-300 border border-white/10 z-10 pointer-events-none">
+              Infographic Animation
+            </span>
+
+            <!-- Center Click to Watch CTA -->
+            <div class="relative z-10 flex flex-col items-center gap-2 transition-transform duration-300 group-hover:scale-105">
+              <div class="w-12 h-12 rounded-full bg-indigo-600/90 group-hover:bg-indigo-500 text-white flex items-center justify-center shadow-glow-indigo transition-all">
+                <svg class="w-5 h-5 fill-current ml-0.5 rtl:ml-0 rtl:mr-0.5" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-[11px] font-medium text-white border border-white/20 shadow-lg tracking-wide">
+                اضغط هنا للمشاهدة
+              </span>
+            </div>
+
+            <div class="absolute bottom-2 right-2 rtl:right-auto rtl:left-2 text-[10px] font-mono text-slate-300 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded z-10">
+              00:32
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-white group-hover:text-indigo-400 transition-colors mb-2">فيديو من سلسلة أخطاء لاعبي كاليستنكس حقيقة تمرين Simon Ata</h3>
+              <p class="text-xs text-slate-400 leading-relaxed mb-4">فيديو إنفوجرافيك أنيميشن تعليمي ومبسط من سلسلة أخطاء لاعبي كاليستنكس يكشف حقيقة تمرين Simon Ata، بتصميم وتوضيح بصري عالي الدقة عبر Figma وتحريك ومونتاج متقن عبر CapCut.</p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
+              <span>CapCut • Figma</span>
+              <span class="text-indigo-400 flex items-center gap-1 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                معاينة ←
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- فيديو إعلان الكاليستنكس فن وقوة.. عتاد المحترفين -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/5 flex flex-col group cursor-pointer hidden">
+          <div class="relative aspect-video bg-slate-900 flex items-center justify-center overflow-hidden">
+            <!-- Blurred Video Preview Poster -->
+            <video src="الكاليستنكس فن وقوة.. عتاد المحترفين.mp4#t=0.5" preload="metadata" class="absolute inset-0 w-full h-full object-cover filter blur-md scale-110 opacity-40 pointer-events-none"></video>
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 scanlines opacity-20"></div>
+
+            <span class="absolute top-3 left-3 rtl:left-auto rtl:right-3 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-[10px] font-mono text-indigo-300 border border-white/10 z-10 pointer-events-none">
+              Cinematic Aesthetic • Beat Sync
+            </span>
+
+            <!-- Center Click to Watch CTA -->
+            <div class="relative z-10 flex flex-col items-center gap-2 transition-transform duration-300 group-hover:scale-105">
+              <div class="w-12 h-12 rounded-full bg-indigo-600/90 group-hover:bg-indigo-500 text-white flex items-center justify-center shadow-glow-indigo transition-all">
+                <svg class="w-5 h-5 fill-current ml-0.5 rtl:ml-0 rtl:mr-0.5" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-[11px] font-medium text-white border border-white/20 shadow-lg tracking-wide">
+                اضغط هنا للمشاهدة
+              </span>
+            </div>
+
+            <div class="absolute bottom-2 right-2 rtl:right-auto rtl:left-2 text-[10px] font-mono text-slate-300 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded z-10">
+              00:13
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-white group-hover:text-indigo-400 transition-colors mb-2">الكاليستنكس فن وقوة.. عتاد المحترفين</h3>
+              <p class="text-xs text-slate-400 leading-relaxed mb-4">إعلان سينمائي وإيقاعي مبهر يبرز جمالية وقوة رياضة الكاليستنكس وعتاد المحترفين، مع مونتاج متزامن مع الإيقاع (Beat Sync) وتنسيق بصري جذاب باستخدام CapCut و أدوات AI الحديثة.</p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
+              <span>CapCut • AI</span>
+              <span class="text-indigo-400 flex items-center gap-1 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                معاينة ←
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- فيديو توازن الأعصاب الحديدية.. مجنون -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/5 flex flex-col group cursor-pointer hidden">
+          <div class="relative aspect-video bg-slate-900 flex items-center justify-center overflow-hidden">
+            <!-- Blurred Video Preview Poster -->
+            <video src="توازن الأعصاب الحديدية.. مجنون.mp4#t=0.5" preload="metadata" class="absolute inset-0 w-full h-full object-cover filter blur-md scale-110 opacity-40 pointer-events-none"></video>
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 scanlines opacity-20"></div>
+
+            <span class="absolute top-3 left-3 rtl:left-auto rtl:right-3 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-[10px] font-mono text-indigo-300 border border-white/10 z-10 pointer-events-none">
+              Phonk Gym Edit
+            </span>
+
+            <!-- Center Click to Watch CTA -->
+            <div class="relative z-10 flex flex-col items-center gap-2 transition-transform duration-300 group-hover:scale-105">
+              <div class="w-12 h-12 rounded-full bg-indigo-600/90 group-hover:bg-indigo-500 text-white flex items-center justify-center shadow-glow-indigo transition-all">
+                <svg class="w-5 h-5 fill-current ml-0.5 rtl:ml-0 rtl:mr-0.5" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-[11px] font-medium text-white border border-white/20 shadow-lg tracking-wide">
+                اضغط هنا للمشاهدة
+              </span>
+            </div>
+
+            <div class="absolute bottom-2 right-2 rtl:right-auto rtl:left-2 text-[10px] font-mono text-slate-300 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded z-10">
+              00:20
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-white group-hover:text-indigo-400 transition-colors mb-2">توازن الأعصاب الحديدية.. مجنون</h3>
+              <p class="text-xs text-slate-400 leading-relaxed mb-4">مونتاج فونك رياضي حماسي (Phonk Gym Edit) يستعرض مهارات التوازن الخارقة والأعصاب الحديدية في الكاليستنكس، بإيقاع سريع وتقطيع احترافي باستخدام CapCut.</p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
+              <span>CapCut</span>
+              <span class="text-indigo-400 flex items-center gap-1 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                معاينة ←
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- فيديو إعلان حتى في الأعماق.. العتاد جاهز -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/5 flex flex-col group cursor-pointer hidden">
+          <div class="relative aspect-video bg-slate-900 flex items-center justify-center overflow-hidden">
+            <!-- Blurred Video Preview Poster -->
+            <video src="اعلان اداة كاليسيتنكس حتى في الأعماق.. العتاد جاهز.mp4#t=0.5" preload="metadata" class="absolute inset-0 w-full h-full object-cover filter blur-md scale-110 opacity-40 pointer-events-none"></video>
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 scanlines opacity-20"></div>
+
+            <span class="absolute top-3 left-3 rtl:left-auto rtl:right-3 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-[10px] font-mono text-indigo-300 border border-white/10 z-10 pointer-events-none">
+              B-Roll Aesthetic • Cinematic AI
+            </span>
+
+            <!-- Center Click to Watch CTA -->
+            <div class="relative z-10 flex flex-col items-center gap-2 transition-transform duration-300 group-hover:scale-105">
+              <div class="w-12 h-12 rounded-full bg-indigo-600/90 group-hover:bg-indigo-500 text-white flex items-center justify-center shadow-glow-indigo transition-all">
+                <svg class="w-5 h-5 fill-current ml-0.5 rtl:ml-0 rtl:mr-0.5" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-[11px] font-medium text-white border border-white/20 shadow-lg tracking-wide">
+                اضغط هنا للمشاهدة
+              </span>
+            </div>
+
+            <div class="absolute bottom-2 right-2 rtl:right-auto rtl:left-2 text-[10px] font-mono text-slate-300 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded z-10">
+              00:14
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-white group-hover:text-indigo-400 transition-colors mb-2">حتى في الأعماق.. العتاد جاهز</h3>
+              <p class="text-xs text-slate-400 leading-relaxed mb-4">فيديو إعلاني سينمائي مميز بتقنيات الذكاء الاصطناعي (Cinematic AI) ولقطات B-Roll جمالية فائقة الدقة تستعرض صلابة عتاد الكاليستنكس حتى في أصعب البيئات، بمونتاج وإخراج لوني أنيق باستخدام CapCut.</p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
+              <span>CapCut</span>
+              <span class="text-indigo-400 flex items-center gap-1 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                معاينة ←
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- مشروع قيد المونتاج — قريبًا -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/5 flex flex-col group cursor-pointer hidden">
+          <div class="relative aspect-video bg-slate-900 flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-900/50 to-slate-900 filter blur-sm opacity-50"></div>
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 scanlines opacity-25"></div>
+
+            <span class="absolute top-3 left-3 rtl:left-auto rtl:right-3 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-[10px] font-mono text-indigo-300 border border-white/10 z-10 pointer-events-none">
+              قيد المونتاج — قريبًا
+            </span>
+
+            <div class="relative z-10 flex flex-col items-center gap-2 transition-transform duration-300 group-hover:scale-105">
+              <div class="w-12 h-12 rounded-full bg-indigo-600/90 group-hover:bg-indigo-500 text-white flex items-center justify-center shadow-glow-indigo transition-all">
+                <svg class="w-5 h-5 fill-current ml-0.5 rtl:ml-0 rtl:mr-0.5" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-[11px] font-medium text-white border border-white/20 shadow-lg tracking-wide">
+                قيد التجهيز
+              </span>
+            </div>
+
+            <div class="absolute bottom-2 right-2 rtl:right-auto rtl:left-2 text-[10px] font-mono text-slate-300 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded z-10">
+              قريباً
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-white group-hover:text-indigo-400 transition-colors mb-2">قيد المونتاج — قريبًا</h3>
+              <p class="text-xs text-slate-400 leading-relaxed mb-4">مشروع فيديو قيد المونتاج والتحريك حالياً، سيتم استعراضه ونشره هنا فور اكتمال التجهيز.</p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
+              <span>Figma • CapCut</span>
+              <span class="text-indigo-400 flex items-center gap-1 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                التفاصيل ←
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- مشروع في مرحلة المراجعة النهائية -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/5 flex flex-col group cursor-pointer hidden">
+          <div class="relative aspect-video bg-slate-900 flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/50 to-slate-900 filter blur-sm opacity-50"></div>
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 scanlines opacity-25"></div>
+
+            <span class="absolute top-3 left-3 rtl:left-auto rtl:right-3 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-[10px] font-mono text-indigo-300 border border-white/10 z-10 pointer-events-none">
+              مراجعة نهائية — قريباً
+            </span>
+
+            <div class="relative z-10 flex flex-col items-center gap-2 transition-transform duration-300 group-hover:scale-105">
+              <div class="w-12 h-12 rounded-full bg-indigo-600/90 group-hover:bg-indigo-500 text-white flex items-center justify-center shadow-glow-indigo transition-all">
+                <svg class="w-5 h-5 fill-current ml-0.5 rtl:ml-0 rtl:mr-0.5" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-[11px] font-medium text-white border border-white/20 shadow-lg tracking-wide">
+                قيد التجهيز
+              </span>
+            </div>
+
+            <div class="absolute bottom-2 right-2 rtl:right-auto rtl:left-2 text-[10px] font-mono text-slate-300 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded z-10">
+              قريباً
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-white group-hover:text-indigo-400 transition-colors mb-2">المشروع في مرحلة المراجعة النهائية</h3>
+              <p class="text-xs text-slate-400 leading-relaxed mb-4">مشروع فيديو في مرحلة اللمسات الأخيرة وضبط الجودة والمراجعة قبل النشر الرسمي.</p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
+              <span>Figma • Rive</span>
+              <span class="text-indigo-400 flex items-center gap-1 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                التفاصيل ←
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toggle More Projects Button -->
+      <div class="mt-10 flex justify-center" id="projects-toggle-container">
+        <button id="toggle-more-projects-btn" class="group relative inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-indigo-500/40 text-sm font-semibold text-white shadow-lg hover:shadow-glow-indigo transition-all duration-300">
+          <span id="toggle-projects-text">اكتشف المزيد من الأعمال</span>
+          <svg id="toggle-projects-icon" class="w-4 h-4 text-indigo-400 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- What I Edit (Services) -->
+  <section id="services" class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-brand-surface/40">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header (Clean without subtext) -->
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-mono text-indigo-400 tracking-wider uppercase" id="services-meta">// WHAT I EDIT</span>
+        <h2 class="text-2xl sm:text-4xl font-display font-bold text-white mt-1" id="services-title">Services & Edits I Deliver</h2>
+      </div>
+
+      <!-- Services Grid (8 Services) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="services-grid">
+        <!-- Injected via JavaScript -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tools Section -->
+  <section id="tools" class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-brand-surface/30">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header (Clean without subtext) -->
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-mono text-indigo-400 tracking-wider uppercase" id="tools-meta">// ACTUAL SOFTWARE STACK</span>
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-white mt-1" id="tools-title">Tools I Actually Use</h2>
+      </div>
+
+      <!-- Current Active Stack with Distinct Vibrant Brand Colors -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 max-w-5xl mx-auto mb-6">
+        
+        <!-- CapCut (Cyan / Teal) -->
+        <div class="glass-card rounded-xl p-4 text-center border border-cyan-500/30 bg-gradient-to-b from-cyan-950/20 to-transparent hover:border-cyan-400/60 hover:shadow-[0_0_20px_-5px_rgba(6,182,212,0.25)] transition-all flex flex-col items-center justify-between min-h-[145px]">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 flex items-center justify-center font-mono font-bold mb-2 text-sm shadow-sm">
+            CC
+          </div>
+          <div>
+            <span class="text-xs font-bold text-white block">CapCut</span>
+            <span class="text-[10px] text-cyan-300/80 font-medium leading-tight block mt-1" id="tool-role-capcut">Pacing & Social Reels</span>
+          </div>
+          <span id="tool-status-capcut" class="mt-2 text-[9px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">ACTIVE</span>
+        </div>
+
+        <!-- DaVinci Resolve (Cinematic Rose / Amber / Indigo Grade) -->
+        <div class="glass-card rounded-xl p-4 text-center border border-rose-500/30 bg-gradient-to-b from-rose-950/25 via-indigo-950/20 to-transparent hover:border-rose-400/60 hover:shadow-[0_0_20px_-5px_rgba(244,63,94,0.25)] transition-all flex flex-col items-center justify-between min-h-[145px]">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500/30 to-rose-500/30 border border-rose-500/30 text-rose-200 flex items-center justify-center font-mono font-bold mb-2 text-sm shadow-sm">
+            DV
+          </div>
+          <div>
+            <span class="text-xs font-bold text-white block">DaVinci Resolve</span>
+            <span class="text-[10px] text-rose-300/80 font-medium leading-tight block mt-1" id="tool-role-davinci">Color & Advanced Cut</span>
+          </div>
+          <span id="tool-status-davinci" class="mt-2 text-[9px] font-mono px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/20">ACTIVE</span>
+        </div>
+
+        <!-- Figma (Purple / Violet) -->
+        <div class="glass-card rounded-xl p-4 text-center border border-purple-500/30 bg-gradient-to-b from-purple-950/20 to-transparent hover:border-purple-400/60 hover:shadow-[0_0_20px_-5px_rgba(168,85,247,0.25)] transition-all flex flex-col items-center justify-between min-h-[145px]">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-300 flex items-center justify-center font-mono font-bold mb-2 text-sm shadow-sm">
+            FG
+          </div>
+          <div>
+            <span class="text-xs font-bold text-white block">Figma</span>
+            <span class="text-[10px] text-purple-300/80 font-medium leading-tight block mt-1" id="tool-role-figma">UI Assets & Layouts</span>
+          </div>
+          <span id="tool-status-figma" class="mt-2 text-[9px] font-mono px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20">ACTIVE</span>
+        </div>
+
+        <!-- Photoshop (Adobe Blue) -->
+        <div class="glass-card rounded-xl p-4 text-center border border-blue-500/30 bg-gradient-to-b from-blue-950/20 to-transparent hover:border-blue-400/60 hover:shadow-[0_0_20px_-5px_rgba(59,130,246,0.25)] transition-all flex flex-col items-center justify-between min-h-[145px]">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 text-blue-300 flex items-center justify-center font-mono font-bold mb-2 text-sm shadow-sm">
+            PS
+          </div>
+          <div>
+            <span class="text-xs font-bold text-white block">Photoshop</span>
+            <span class="text-[10px] text-blue-300/80 font-medium leading-tight block mt-1" id="tool-role-ps">Thumbnails & Graphics</span>
+          </div>
+          <span id="tool-status-ps" class="mt-2 text-[9px] font-mono px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20">ACTIVE</span>
+        </div>
+
+        <!-- Rive (Emerald / Mint) -->
+        <div class="glass-card rounded-xl p-4 text-center border border-emerald-500/30 bg-gradient-to-b from-emerald-950/20 to-transparent hover:border-emerald-400/60 hover:shadow-[0_0_20px_-5px_rgba(16,185,129,0.25)] transition-all flex flex-col items-center justify-between min-h-[145px]">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 flex items-center justify-center font-mono font-bold mb-2 text-sm shadow-sm">
+            RV
+          </div>
+          <div>
+            <span class="text-xs font-bold text-white block">Rive</span>
+            <span class="text-[10px] text-emerald-300/80 font-medium leading-tight block mt-1" id="tool-role-rive">Interactive Vector Motion</span>
+          </div>
+          <span id="tool-status-rive" class="mt-2 text-[9px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">ACTIVE</span>
+        </div>
+
+      </div>
+
+      <!-- Coming Soon Stack (Clean minimal cards with "قريباً / Coming Soon") -->
+      <div class="flex flex-wrap items-center justify-center gap-3 max-w-md mx-auto">
+        <div class="px-3.5 py-2 rounded-xl bg-zinc-900/40 border border-dashed border-zinc-700/60 flex items-center gap-2 text-xs">
+          <span class="text-zinc-500">🔒</span>
+          <span class="font-semibold text-zinc-300">After Effects</span>
+          <span class="tool-coming-soon text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">Coming Soon</span>
+        </div>
+        <div class="px-3.5 py-2 rounded-xl bg-zinc-900/40 border border-dashed border-zinc-700/60 flex items-center gap-2 text-xs">
+          <span class="text-zinc-500">🔒</span>
+          <span class="font-semibold text-zinc-300">Blender</span>
+          <span class="tool-coming-soon text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">Coming Soon</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 11-Step Interactive Project Pipeline -->
+  <section id="process" class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header with Auto-Tour Controls (Clean without subtext) -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <span class="text-xs font-mono text-indigo-400 tracking-wider uppercase" id="pipeline-meta">// TRANSPARENT WORKFLOW</span>
+          <h2 class="text-2xl sm:text-4xl font-display font-bold text-white mt-1" id="pipeline-title">Your Project Steps (01 — 11)</h2>
+        </div>
+        
+        <!-- Auto Tour Button -->
+        <button id="auto-tour-btn" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 text-xs font-semibold transition-all">
+          <svg id="auto-tour-icon" class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <span id="auto-tour-text">Start Auto Tour</span>
+        </button>
+      </div>
+
+      <!-- Live Percentage Progress Bar -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between text-xs font-mono mb-2">
+          <span class="text-slate-400" id="pipeline-step-indicator">Step 01 of 11: Contact</span>
+          <span class="text-indigo-400 font-bold" id="pipeline-percent">9% COMPLETE</span>
+        </div>
+        <div class="w-full h-2 rounded-full bg-white/5 overflow-hidden p-0.5 border border-white/5">
+          <div id="pipeline-progress-bar" class="h-full rounded-full bg-gradient-to-r from-indigo-500 to-emerald-400 transition-all duration-500 w-[9%]"></div>
+        </div>
+      </div>
+
+      <!-- Horizontal Scrollable Step Buttons -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar" id="step-selector-row">
+        <!-- Buttons injected via JavaScript -->
+      </div>
+
+      <!-- Active Step Visual Card -->
+      <div class="glass-card rounded-2xl p-6 sm:p-8 border border-white/10 relative overflow-hidden" id="active-step-card">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Step Text Content -->
+          <div class="lg:col-span-8">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-indigo-400 mb-3" id="step-badge">
+              STEP 01 // 11
+            </div>
+            <h3 class="text-xl sm:text-2xl font-display font-bold text-white mb-3" id="step-title">
+              01. Contact — Direct Discussion for Your Project
+            </h3>
+            <p class="text-sm text-slate-300 leading-relaxed mb-4" id="step-description">
+              Reach out directly to discuss your project type, target platform, and timeline. No complicated forms or delays.
+            </p>
+            <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-400" id="step-meta-chips">
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-slate-300" id="step-meta-channel">وسيلة التواصل: واتساب / تليجرام</span>
+              <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5 text-slate-300" id="step-meta-turnaround">سرعة الرد: استجابة سريعة ومباشرة</span>
+            </div>
+          </div>
+
+          <!-- Step Security & Status Visual Pillar -->
+          <div class="lg:col-span-4 rounded-xl p-5 bg-white/[0.03] border border-white/5 flex flex-col gap-3">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-slate-400" id="step-status-label">حالة المرحلة</span>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-mono text-[11px]" id="step-guarantee-badge">Direct & Clear</span>
+            </div>
+            <div class="h-px bg-white/5"></div>
+            <p class="text-xs text-slate-300 leading-relaxed" id="step-guarantee-text">
+              Direct conversation with Mohamed. You get clear answers and realistic feedback on your video idea.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="relative z-10 py-16 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <div class="max-w-4xl mx-auto">
+      <div class="glass-card rounded-2xl p-6 sm:p-10 border border-white/10">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-8 pb-6 border-b border-white/5">
+          <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-black/60 border border-white/10 p-2 shadow-glow-indigo flex-shrink-0 flex items-center justify-center overflow-hidden">
+            <img src="logo.png" alt="Mohamed Amine Logo" class="w-full h-full object-contain">
+          </div>
+          <div>
+            <span class="text-xs font-mono text-indigo-400 tracking-wider uppercase" id="about-meta">// AUTHENTIC BIO</span>
+            <h2 class="text-2xl sm:text-3xl font-display font-bold text-white mt-0.5" id="about-title">About Me</h2>
+          </div>
+        </div>
+        
+        <div class="space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed" id="about-content">
+          <p id="about-p1">
+            I'm Mohamed Amine Djouama, a freelance video editor based in Algeria working on elevating my craft and shaping my distinct visual style.
+          </p>
+          <p id="about-p2">
+            I focus on creating modern videos that harmonize rhythm, precise cuts, dynamic motion, and visual identity—prioritizing clarity of message and an exceptional viewer experience.
+          </p>
+          <p id="about-p3">
+            I'm actively growing my portfolio through real and experimental projects in collaboration with content creators, friends, and emerging businesses, striving with every timeline to deliver work that surpasses the last.
+          </p>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-white/5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-slate-400">
+          <div id="about-location">📍 Location: Boumerdès / Algeria</div>
+          <div id="about-focus">🎬 Primary Focus: Social Reels, Motion & Promo Visuals</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section (Direct Social Media Buttons without exposing phone/handles) -->
+  <section id="contact" class="relative z-10 py-20 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-brand-surface/40">
+    <div class="max-w-3xl mx-auto text-center">
+      
+      <span class="text-xs font-mono text-indigo-400 tracking-wider uppercase" id="contact-meta">// LET'S CONNECT</span>
+      <h2 class="text-3xl sm:text-5xl font-display font-bold text-white mt-2 mb-10" id="contact-title">
+        Have a video in mind?
+      </h2>
+
+      <!-- Social Media Direct Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 max-w-xl mx-auto mb-8">
+        
+        <!-- WhatsApp -->
+        <a id="btn-wa" href="https://wa.me/213552100070" target="_blank" rel="noopener noreferrer" class="btn-sheen inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/30 text-emerald-400 hover:text-emerald-300 font-semibold text-sm transition-all shadow-sm group">
+          <svg class="w-5 h-5 fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.97.53 2.015.82 3.197.82 3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.769-5.766zm7.25 5.766c0 3.999-3.256 7.254-7.25 7.254-1.258 0-2.457-.323-3.504-.897l-4.527 1.188 1.21-4.417c-.664-1.1-1.042-2.386-1.042-3.728 0-3.999 3.256-7.254 7.25-7.254 3.996 0 7.253 3.255 7.253 7.254z"/>
+          </svg>
+          <span id="btn-wa-text">WhatsApp</span>
+        </a>
+
+        <!-- Telegram -->
+        <a id="btn-tg" href="https://t.me/aminemohamed0" target="_blank" rel="noopener noreferrer" class="btn-sheen inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-[#0088cc]/15 hover:bg-[#0088cc]/25 border border-[#0088cc]/30 text-sky-400 hover:text-sky-300 font-semibold text-sm transition-all shadow-sm group">
+          <svg class="w-5 h-5 fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+          </svg>
+          <span id="btn-tg-text">Telegram</span>
+        </a>
+
+        <!-- Facebook -->
+        <a id="btn-fb" href="https://www.facebook.com/djouama.mohamed" target="_blank" rel="noopener noreferrer" class="btn-sheen inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-[#1877F2]/15 hover:bg-[#1877F2]/25 border border-[#1877F2]/30 text-blue-400 hover:text-blue-300 font-semibold text-sm transition-all shadow-sm group">
+          <svg class="w-5 h-5 fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
+            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+          </svg>
+          <span id="btn-fb-text">Facebook</span>
+        </a>
+
+        <!-- Direct Email Button (Opens Smart Modal) -->
+        <button id="btn-email-modal" type="button" class="btn-sheen inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-indigo-600/15 hover:bg-indigo-600/25 border border-indigo-500/30 text-indigo-400 hover:text-indigo-300 font-semibold text-sm transition-all shadow-sm group cursor-pointer">
+          <svg class="w-5 h-5 fill-none stroke-current transition-transform group-hover:scale-110" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          <span id="btn-email-text">Email</span>
+        </button>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative z-10 py-10 px-4 border-t border-white/5 text-center text-xs text-slate-500 font-mono">
+    <div class="max-w-7xl mx-auto flex flex-col items-center justify-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-black/60 border border-white/10 p-1 flex items-center justify-center shadow-glow-indigo overflow-hidden">
+        <img src="logo.png" alt="Mohamed Amine" class="w-full h-full object-contain">
+      </div>
+      <div id="footer-copy">© 2026 Mohamed Amine Djouama. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Video Player Preview Modal -->
+  <div id="video-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 hidden overflow-y-auto">
+    <div class="relative w-full max-w-2xl max-h-[92vh] flex flex-col bg-brand-surface rounded-2xl border border-white/10 shadow-2xl overflow-hidden my-auto">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-brand-card/80 flex-shrink-0">
+        <div class="flex items-center gap-2.5">
+          <div class="w-6 h-6 rounded-md bg-black/60 border border-white/10 p-0.5 flex items-center justify-center overflow-hidden">
+            <img src="logo.png" alt="Logo" class="w-full h-full object-contain">
+          </div>
+          <span class="text-xs font-mono text-slate-300" id="modal-project-title">Video Preview</span>
+        </div>
+        <button id="close-video-modal" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/15 text-slate-400 hover:text-white transition-all text-xs font-mono">
+          ✕ CLOSE
+        </button>
+      </div>
+
+      <!-- Modal Content Body -->
+      <div class="overflow-y-auto flex-1 flex flex-col">
+        <!-- Video Player Stage (Optimized for 9:16 Vertical & Any Ratio without Cropping) -->
+        <div class="w-full bg-black flex items-center justify-center p-2 sm:p-4 min-h-[260px] max-h-[62vh] relative" id="modal-player-container">
+          <!-- Preview / Video element injected via JS -->
+        </div>
+
+        <!-- Lower Section: Metadata, Categories, Tools, and Info -->
+        <div class="p-4 sm:p-6 border-t border-white/10 bg-brand-surface" id="modal-info-container">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Email Contact Modal -->
+  <div id="email-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="relative w-full max-w-lg bg-brand-surface rounded-2xl border border-white/10 p-6 sm:p-8 shadow-2xl overflow-hidden">
+      <!-- Ambient Glow -->
+      <div class="absolute -top-20 -right-20 w-48 h-48 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-black/60 border border-white/10 p-1 flex items-center justify-center shadow-glow-indigo flex-shrink-0 overflow-hidden">
+            <img src="logo.png" alt="Mohamed Amine" class="w-full h-full object-contain">
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white" id="email-modal-title">Send an Email Inquiry</h3>
+            <p class="text-xs text-slate-400" id="email-modal-sub">Reach Mohamed Amine directly to discuss your project</p>
+          </div>
+        </div>
+        <button id="close-email-modal" class="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-all text-xs font-mono">
+          ✕
+        </button>
+      </div>
+
+      <!-- Email Address Display & 1-Click Copy -->
+      <div class="p-4 rounded-xl bg-white/[0.03] border border-white/5 mb-6">
+        <div class="text-[11px] font-mono text-slate-400 mb-1" id="email-box-label">Direct Email Address:</div>
+        <div class="flex items-center justify-between gap-2">
+          <span class="font-mono text-sm sm:text-base text-indigo-300 font-semibold select-all break-all" id="email-address-text">mohamedaminedjouama@gmail.com</span>
+          <button id="copy-email-btn" type="button" class="flex-shrink-0 px-3 py-1.5 rounded-lg bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer">
+            <svg class="w-3.5 h-3.5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span id="copy-email-label">Copy</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Direct Sending Actions -->
+      <div class="space-y-3">
+        <!-- Option 1: Open in Web Gmail -->
+        <a id="gmail-web-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=mohamedaminedjouama@gmail.com&su=Video+Editing+Inquiry+-+Project+Discussion" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-glow-indigo">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.272H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L12 9.5l8.073-6.007C21.69 2.28 24 3.434 24 5.457z"/>
+          </svg>
+          <span id="gmail-web-label">Open in Gmail (Web Browser)</span>
+        </a>
+
+        <!-- Option 2: Open in Default Mail App -->
+        <a id="default-mail-link" href="mailto:mohamedaminedjouama@gmail.com?subject=Video%20Editing%20Inquiry%20%E2%80%94%20Project%20Discussion" class="w-full py-3 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white font-semibold text-xs sm:text-sm border border-white/5 flex items-center justify-center gap-2 transition-all">
+          <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          <span id="default-mail-label">Open in Default Mail App</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    /**
+     * =========================================================================
+     * 1. GLOBAL CLIENT DATA CONFIGURATION
+     * =========================================================================
+     */
+    const CONFIG = {
+      editorNameEn: "Mohamed Amine Djouama",
+      editorNameAr: "محمد أمين جوامع",
+      titleEn: "Freelance Video Editor",
+      titleAr: "مونتير فيديو مستقل",
+      locationEn: "Algeria",
+      locationAr: "الجزائر",
+      whatsappNumber: "213552100070",
+      telegramHandle: "aminemohamed0",
+      facebookUrl: "https://www.facebook.com/djouama.mohamed",
+      email: "mohamedaminedjouama@gmail.com",
+      logoUrl: "logo.png",
+
+      projects: [
+        {
+          id: "proj-gemini-pro",
+          category: "ads",
+          titleEn: "Gemini Pro Social Media Ad",
+          titleAr: "اعلان سوشيال ميديا  لجيميني برو",
+          descEn: "Dynamic social media video ad for Gemini Pro with fluid motion graphics and engaging visual rhythm.",
+          descAr: "إعلان فيديو احترافي لسوشيال ميديا لجيميني برو بموشن جرافيك جذاب، وتحريك سلس للواجهات مع إيقاع عصري متقن.",
+          badge: "Social Ad",
+          badgeEn: "Social Ad",
+          badgeAr: "إعلان سوشيال",
+          tools: "CapCut • Figma • Rive",
+          toolsEn: "CapCut • Figma • Rive",
+          toolsAr: "CapCut • Figma • Rive",
+          duration: "00:28",
+          aspectRatioEn: "9:16 (Vertical)",
+          aspectRatioAr: "9:16 (عمودي)",
+          publishDateEn: "10/10/2026",
+          publishDateAr: "10/10/2026",
+          videoSrc: "اعلان سوشيال ميديا  لجيميني برو.mp4",
+          previewColor: "from-indigo-900/60 to-cyan-900/80"
+        },
+        {
+          id: "proj-capcut-pc",
+          category: "ads",
+          titleEn: "CapCut PC Course Welcome Video — Part of the Full Video",
+          titleAr: "فيديو ترحيبي لدورة CapCut PC — جزء من الفيديو الكامل",
+          descEn: "A clean and engaging welcome promo video for the CapCut PC course, featuring kinetic typography, smooth pacing, and modern visual branding.",
+          descAr: "فيديو بسيط ومميز يعرض مقدمة ترحيبية لدورة CapCut على الكمبيوتر (PC)، بتنسيق مرئي جذاب، تحريك نصوص أنيق، وتصميم متقن بالدمج بين CapCut و Photoshop.",
+          badge: "Social Ad",
+          badgeEn: "Social Ad • Simple Video",
+          badgeAr: "إعلان سوشيال • فيديو بسيط",
+          tools: "CapCut • Photoshop",
+          toolsEn: "CapCut • Photoshop",
+          toolsAr: "CapCut • Photoshop",
+          duration: "00:37",
+          aspectRatioEn: "16:9 (Horizontal)",
+          aspectRatioAr: "16:9 (أفقي)",
+          publishDateEn: "01/10/2026",
+          publishDateAr: "1/10/2026",
+          videoSrc: "جزء من الفيديو ترحيبي لدورة كاب كات بيسي .mp4",
+          previewColor: "from-cyan-900/60 to-indigo-900/80"
+        },
+        {
+          id: "proj-simon-ata",
+          category: "motion",
+          titleEn: "Calisthenics Mistakes Series: The Truth About Simon Ata Exercise",
+          titleAr: "فيديو من سلسلة أخطاء لاعبي كاليستنكس حقيقة تمرين Simon Ata",
+          descEn: "An engaging infographic animation video from the Calisthenics Mistakes series breaking down the truth about Simon Ata's exercise, crafted with precise visual assets in Figma and smooth motion editing in CapCut.",
+          descAr: "فيديو إنفوجرافيك أنيميشن تعليمي ومبسط من سلسلة أخطاء لاعبي كاليستنكس يكشف حقيقة تمرين Simon Ata، بتصميم وتوضيح بصري عالي الدقة عبر Figma وتحريك ومونتاج متقن عبر CapCut.",
+          badge: "Infographic Animation",
+          badgeEn: "Infographic Animation",
+          badgeAr: "Infographic Animation",
+          categoryNameEn: "Infographic Animation",
+          categoryNameAr: "Infographic Animation",
+          tools: "CapCut • Figma",
+          toolsEn: "CapCut • Figma",
+          toolsAr: "CapCut • Figma",
+          duration: "00:32",
+          aspectRatioEn: "16:9 (Horizontal)",
+          aspectRatioAr: "16:9 (أفقي)",
+          publishDateEn: "12/01/2026",
+          publishDateAr: "12/01/2026",
+          videoSrc: "فيديو من سلسلة أخطاء المحترفين حقيقة تمرين Simon Ata.mp4",
+          previewColor: "from-purple-900/60 to-cyan-900/80"
+        },
+        {
+          id: "proj-calisthenics-aesthetic",
+          category: "reels",
+          secondaryCategory: "ads",
+          titleEn: "Calisthenics: Art & Power — The Pro Gear",
+          titleAr: "الكاليستنكس فن وقوة.. عتاد المحترفين",
+          descEn: "A cinematic, aesthetic beat-sync promo reel showcasing the art and power of calisthenics and pro gear, precisely cut to the rhythm using CapCut and modern AI tools.",
+          descAr: "إعلان سينمائي وإيقاعي مبهر يبرز جمالية وقوة رياضة الكاليستنكس وعتاد المحترفين، مع مونتاج متزامن مع الإيقاع (Beat Sync) وتنسيق بصري جذاب باستخدام CapCut و أدوات AI الحديثة.",
+          badge: "Cinematic Aesthetic • Beat Sync",
+          badgeEn: "Cinematic Aesthetic • Beat Sync",
+          badgeAr: "Cinematic Aesthetic • Beat Sync",
+          categoryNameEn: "Cinematic Aesthetic Edit • Beat Sync Reel",
+          categoryNameAr: "Cinematic Aesthetic Edit • Beat Sync Reel",
+          tools: "CapCut • AI",
+          toolsEn: "CapCut • AI",
+          toolsAr: "CapCut • AI",
+          duration: "00:13",
+          aspectRatioEn: "3:4 (Vertical)",
+          aspectRatioAr: "3:4 (عمودي)",
+          publishDateEn: "14/02/2026",
+          publishDateAr: "14/02/2026",
+          videoSrc: "الكاليستنكس فن وقوة.. عتاد المحترفين.mp4",
+          previewColor: "from-rose-900/60 to-indigo-900/80"
+        },
+        {
+          id: "proj-iron-nerves-balance",
+          category: "reels",
+          titleEn: "Iron Nerves Balance — Insane Calisthenics Edit",
+          titleAr: "توازن الأعصاب الحديدية.. مجنون",
+          descEn: "An intense Phonk Gym edit highlighting insane balance control and iron nerves in calisthenics, edited with fast-paced cuts and rhythmic impact using CapCut.",
+          descAr: "مونتاج فونك رياضي حماسي (Phonk Gym Edit) يستعرض مهارات التوازن الخارقة والأعصاب الحديدية في الكاليستنكس، بإيقاع سريع وتقطيع احترافي باستخدام CapCut.",
+          badge: "Phonk Gym Edit",
+          badgeEn: "Phonk Gym Edit",
+          badgeAr: "Phonk Gym Edit",
+          categoryNameEn: "Phonk Gym Edit",
+          categoryNameAr: "Phonk Gym Edit",
+          tools: "CapCut",
+          toolsEn: "CapCut",
+          toolsAr: "CapCut",
+          duration: "00:20",
+          aspectRatioEn: "3:4 (Vertical)",
+          aspectRatioAr: "3:4 (عمودي)",
+          publishDateEn: "11/03/2026",
+          publishDateAr: "11/03/2026",
+          videoSrc: "توازن الأعصاب الحديدية.. مجنون.mp4",
+          previewColor: "from-amber-900/60 to-rose-900/80"
+        },
+        {
+          id: "proj-depths-gear",
+          category: "ads",
+          secondaryCategory: "reels",
+          titleEn: "Even in the Depths — Gear is Ready",
+          titleAr: "حتى في الأعماق.. العتاد جاهز",
+          descEn: "A cinematic AI promo reel featuring stunning aesthetic B-roll visuals showcasing calisthenics gear durability in extreme environments, polished with seamless color grading in CapCut.",
+          descAr: "فيديو إعلاني سينمائي مميز بتقنيات الذكاء الاصطناعي (Cinematic AI) ولقطات B-Roll جمالية فائقة الدقة تستعرض صلابة عتاد الكاليستنكس حتى في أصعب البيئات، بمونتاج وإخراج لوني أنيق باستخدام CapCut.",
+          badge: "B-Roll Aesthetic • Cinematic AI",
+          badgeEn: "B-Roll Aesthetic • Cinematic AI",
+          badgeAr: "B-Roll Aesthetic • Cinematic AI",
+          categoryNameEn: "B-Roll Aesthetic / Cinematic AI",
+          categoryNameAr: "B-Roll Aesthetic / Cinematic AI",
+          tools: "CapCut",
+          toolsEn: "CapCut",
+          toolsAr: "CapCut",
+          duration: "00:14",
+          aspectRatioEn: "3:4 (Vertical)",
+          aspectRatioAr: "3:4 (عمودي)",
+          publishDateEn: "30/01/2026",
+          publishDateAr: "30/01/2026",
+          videoSrc: "اعلان اداة كاليسيتنكس حتى في الأعماق.. العتاد جاهز.mp4",
+          previewColor: "from-cyan-950/70 to-blue-900/80"
+        },
+        {
+          id: "proj-3",
+          category: "motion",
+          titleEn: "Currently in Post-Production — Coming Soon",
+          titleAr: "قيد المونتاج — قريبًا",
+          descEn: "Video project currently in editing and animation. Will be published and showcased here once ready.",
+          descAr: "مشروع فيديو قيد المونتاج والتحريك حالياً، سيتم استعراضه ونشره هنا فور اكتمال التجهيز.",
+          badge: "In Editing",
+          badgeEn: "In Editing • Coming Soon",
+          badgeAr: "قيد المونتاج — قريبًا",
+          tools: "Figma • CapCut",
+          publishDateEn: "Coming Soon",
+          publishDateAr: "قريباً",
+          previewColor: "from-cyan-900/50 to-slate-900"
+        },
+        {
+          id: "proj-5",
+          category: "motion",
+          titleEn: "Project in Final Review Stage",
+          titleAr: "المشروع في مرحلة المراجعة النهائية",
+          descEn: "Video project undergoing final quality review and polishing before official release.",
+          descAr: "مشروع فيديو في مرحلة اللمسات الأخيرة وضبط الجودة والمراجعة قبل النشر الرسمي.",
+          badge: "Final Review",
+          badgeEn: "Final Review • Coming Soon",
+          badgeAr: "مراجعة نهائية — قريباً",
+          tools: "Figma • Rive",
+          publishDateEn: "Coming Soon",
+          publishDateAr: "قريباً",
+          previewColor: "from-emerald-900/50 to-slate-900"
+        }
+      ],
+
+      services: [
+        { id: "s1", icon: "⚡", titleEn: "Social Media Reels", titleAr: "ريلز السوشيال ميديا", descEn: "High-retention 9:16 vertical edits optimized for Instagram & TikTok algorithms.", descAr: "مونتاج رأسي 9:16 عالي الحفظ مصمم خصيصاً لخوارزميات إنستغرام وتيك توك." },
+        { id: "s2", icon: "🎯", titleEn: "Social Media Ads", titleAr: "إعلانات السوشيال", descEn: "Action-oriented ad creatives with compelling hooks and conversion-focused CTAs.", descAr: "فيديوهات إعلانية بهوك خاطف وتوجيه مباشر للعملاء لزيادة التفاعل والطلبات." },
+        { id: "s3", icon: "💻", titleEn: "SaaS Promo Videos", titleAr: "إعلانات البرامج", descEn: "Clean visual overviews demonstrating software value without confusing clutter.", descAr: "عروض بصرية أنيقة تشرح مزايا البرامج السحابية دون تعقيد." },
+        { id: "s4", icon: "📦", titleEn: "Product Demo Videos", titleAr: "شرح المنتجات", descEn: "Highlighting tangible product features, unboxing details, and real usability.", descAr: "إبراز تفاصيل المنتج الحقيقية، التغليف، وتجربة الاستخدام المباشرة." },
+        { id: "s5", icon: "🚀", titleEn: "Tech Promo Videos", titleAr: "إعلانات التقنية", descEn: "Modern futuristic visuals, glow accents, and tech-inspired transitions.", descAr: "تصميم بصري حديث بلمسات نيون وانتقالات تقنية تناسب عالم التكنولوجيا." },
+        { id: "s6", icon: "✨", titleEn: "Motion Graphics", titleAr: "موشن جرافيك", descEn: "Smooth vector animations, tracked graphics, and kinetic typography elements.", descAr: "تحريك نصوص سلس وعناصر رسومية متتبعة تضيف احترافية للفيديو." },
+        { id: "s7", icon: "🎬", titleEn: "YouTube Video Editing", titleAr: "مونتاج يوتيوب", descEn: "Engaging narrative pacing, b-roll insertions, chapter cues, and sound balancing.", descAr: "مونتاج سردي جذاب لليوتيوب يشمل تقطيع المشاهد، إدراج B-roll وهندسة الصوت." },
+        { id: "s8", icon: "📱", titleEn: "App Demo Videos", titleAr: "عرض التطبيقات", descEn: "Showcasing mobile application UX/UI flows inside modern device mockups.", descAr: "استعراض تجربة استخدام تطبيقات الجوال داخل قوالب هواتف عصرية." }
+      ],
+
+      // 11 Project Pipeline Steps with Direct Second-Person Address ("أنت / مشروعك / الخاص بك")
+      pipelineSteps: [
+        {
+          id: 1,
+          icon: "💬",
+          titleEn: "01. Contact — Direct Discussion for Your Project",
+          titleAr: "01. التواصل — مناقشة فكرة مشروعك مباشرة",
+          shortEn: "Contact",
+          shortAr: "التواصل لمشروعك",
+          descEn: "Reach out directly via WhatsApp, Telegram, or Email to discuss your project type, target platform, and timeline. No complicated forms or delays.",
+          descAr: "تتواصل معي مباشرة لمناقشة نوع مشروعك والمنصة المستهدفة والوقت المطلوب دون أي تعقيدات.",
+          badgeEn: "Direct & Clear",
+          badgeAr: "مباشر وواضح",
+          guaranteeEn: "Fast personal response to understand your video concept.",
+          guaranteeAr: "رد سريع ومباشر لمناقشة فكرة الفيديو الخاص بك بوضوح.",
+          channelEn: "Channel: WhatsApp / Telegram / Email",
+          channelAr: "وسيلة التواصل: واتساب / تليجرام / الإيميل",
+          turnaroundEn: "Turnaround: Fast Personal Reply",
+          turnaroundAr: "سرعة الرد: استجابة سريعة ومباشرة"
+        },
+        {
+          id: 2,
+          icon: "📋",
+          titleEn: "02. Brief — Your Project Scope & Goals",
+          titleAr: "02. فهم متطلبات مشروعك وأهدافه بدقة",
+          shortEn: "Brief",
+          shortAr: "فهم متطلباتك",
+          descEn: "We clarify your video objective, duration, audience, and preferred style references to align our creative vision perfectly before cutting.",
+          descAr: "نحدد الهدف من الفيديو الخاص بك، الجمهور المستهدف، ونماذج الأسلوب الذي تفضله لنتفق على الرؤية الفنية بدقة.",
+          badgeEn: "Alignment",
+          badgeAr: "وضوح الرؤية",
+          guaranteeEn: "A clear roadmap tailored to your specific project needs.",
+          guaranteeAr: "خريطة طريق واضحة ومخصصة تماماً لمتطلبات مشروعك.",
+          channelEn: "Channel: Voice Notes / Chat",
+          channelAr: "وسيلة التواصل: رسائل صوتية / محادثة",
+          turnaroundEn: "Turnaround: Same Day",
+          turnaroundAr: "المدة: نفس اليوم"
+        },
+        {
+          id: 3,
+          icon: "🤝",
+          titleEn: "03. Agreement & Flat Fee for Your Project",
+          titleAr: "03. الاتفاق والسعر المحدد لمشروعك — يشمل تعديلاً كاملاً",
+          shortEn: "Price & Agreement",
+          shortAr: "الاتفاق والسعر",
+          descEn: "A transparent, fair flat fee for your video, formally including 1 full comprehensive revision round with zero hidden costs.",
+          descAr: "سعر واضح ومحدد لمشروعك يناسبك تماماً، متضمناً رسمياً جولة تعديل واحدة شاملة وكاملة بدون أي تكاليف مخفية.",
+          badgeEn: "Fair Pricing",
+          badgeAr: "سعر عادل وواضح",
+          guaranteeEn: "Strictly includes 1 full revision for your complete peace of mind.",
+          guaranteeAr: "يشمل رسمياً تعديلاً شاملاً لضمان رضاك التام عن النتيجة.",
+          channelEn: "Fee: Clear Flat Rate (1 Full Revision)",
+          channelAr: "الاتفاق: سعر محدد وشامل تعديلاً كاملاً",
+          turnaroundEn: "Terms: Written & Transparent",
+          turnaroundAr: "الشروط: واضحة وبدون أي تكاليف خفية"
+        },
+        {
+          id: 4,
+          icon: "💳",
+          titleEn: "04. 30% Deposit — Securing Your Project Slot",
+          titleAr: "04. حجز موعد مشروعك — دفعة 30% لتأكيد العمل",
+          shortEn: "30% Deposit",
+          shortAr: "تأكيد حجز مشروعك",
+          descEn: "A simple 30% advance locks in your project's production slot and begins immediate asset sorting and timeline setup.",
+          descAr: "دفعة 30% ميسرة لتأكيد حجز موعد مشروعك وبدء فرز اللقطات وتجهيز التايملاين الخاص بك.",
+          badgeEn: "Safe Booking",
+          badgeAr: "حجز مؤكد",
+          guaranteeEn: "Production calendar slot exclusively locked for your project.",
+          guaranteeAr: "موعد عمل مخصص ومؤكد لمشروعك في جدول الإنتاج.",
+          channelEn: "Payment: CCP / BaridiMob / Paysera / Wise",
+          channelAr: "طريقة الدفع: بريدي موب / CCP / باي سيرا / وايز",
+          turnaroundEn: "Status: Slot Exclusively Booked",
+          turnaroundAr: "الحالة: تأكيد حجز موعدك فوراً"
+        },
+        {
+          id: 5,
+          icon: "📁",
+          titleEn: "05. Files Transfer — Sending Your Raw Clips",
+          titleAr: "05. إرسال لقطاتك وملفات مشروعك بأعلى دقة",
+          shortEn: "Files Transfer",
+          shortAr: "استلام لقطاتك",
+          descEn: "You share your raw video clips, logos, and audio via Google Drive or Telegram (as uncompressed documents) to preserve maximum visual fidelity.",
+          descAr: "ترسل لقطاتك المصورة والشعار وملحقاتك عبر Drive أو Telegram بدون ضغط للحفاظ على أعلى جودة للصورة في الفيديو الخاص بك.",
+          badgeEn: "Lossless Transfer",
+          badgeAr: "أعلى جودة للملفات",
+          guaranteeEn: "Lossless quality retention for all your supplied footage.",
+          guaranteeAr: "الحفاظ على الدقة الأصلية الكاملة لجميع المقاطع الخاصة بك.",
+          channelEn: "Transfer: Google Drive / Telegram Files",
+          channelAr: "طريقة الإرسال: Google Drive / تليجرام كملفات",
+          turnaroundEn: "Quality: 100% Lossless Original",
+          turnaroundAr: "الجودة: حفظ دقة لقطاتك بنسبة 100%"
+        },
+        {
+          id: 6,
+          icon: "✂️",
+          titleEn: "06. Editing — The Creative Cut for Your Video",
+          titleAr: "06. مرحلة المونتاج والتقطيع الإبداعي لمشروعك",
+          shortEn: "Editing",
+          shortAr: "مونتاج مشروعك",
+          descEn: "Trimming all dead air, building high-retention hooks, custom kinetic typography, color grading, and immersive sound design crafted for your audience.",
+          descAr: "تقطيع الفراغات، صياغة هوك قوي يجذب جمهورك، كابشنز متحركة، تلوين سينمائي، ومؤثرات صوتية تزيد تفاعل المشاهدين مع مشروعك.",
+          badgeEn: "Active Craft",
+          badgeAr: "تنفيذ إبداعي",
+          guaranteeEn: "Meticulous attention to your video's pacing and typography.",
+          guaranteeAr: "عناية فائقة بإيقاع لقطاتك وتناسق حركة النصوص مع فكرتك.",
+          channelEn: "Software: DaVinci Resolve / CapCut",
+          channelAr: "البرامج: DaVinci Resolve / CapCut",
+          turnaroundEn: "Turnaround: 24 - 48 Hours",
+          turnaroundAr: "مدة الإنجاز: 24 إلى 48 ساعة"
+        },
+        {
+          id: 7,
+          icon: "👁️",
+          titleEn: "07. Preview — Mobile Draft for Your Review",
+          titleAr: "07. معاينة مسودة مشروعك على هاتفك مباشرة",
+          shortEn: "Preview",
+          shortAr: "معاينة مسودتك",
+          descEn: "You receive a watermarked preview link to test the edit on your actual mobile screen, exactly as your viewers will experience it.",
+          descAr: "تستلم رابطاً لمشاهدة مسودة الفيديو على شاشة هاتفك بنفس الطريقة التي سيختبرها بها جمهورك على المنصات.",
+          badgeEn: "Real Preview",
+          badgeAr: "معاينة واقعية",
+          guaranteeEn: "Evaluate pacing and captions on your own device.",
+          guaranteeAr: "تجربة واقعية لسرعة الفيديو والنصوص على جهازك مباشرة.",
+          channelEn: "Format: Private Mobile Stream Link",
+          channelAr: "المعاينة: رابط تجريبي مباشر لشاشة هاتفك",
+          turnaroundEn: "Display: Optimized for Vertical Screen",
+          turnaroundAr: "العرض: متطابق مع تجربة مشاهديك"
+        },
+        {
+          id: 8,
+          icon: "🔄",
+          titleEn: "08. Revisions — Executing Your Feedback",
+          titleAr: "08. تنفيذ كافة تعديلاتك وملاحظاتك خلال 48 ساعة",
+          shortEn: "Revisions",
+          shortAr: "تنفيذ تعديلاتك",
+          descEn: "You send your consolidated feedback notes. I implement your required adjustments within 48 hours until you are completely satisfied.",
+          descAr: "ترسل ملاحظاتك مرة واحدة، وأقوم بتطبيق كافة تعديلاتك بدقة واهتمام خلال 48 ساعة حتى ترضى تماماً عن مشروعك.",
+          badgeEn: "48h Guarantee",
+          badgeAr: "تنفيذ خلال 48 ساعة",
+          guaranteeEn: "Dedicated attention to every single note you request.",
+          guaranteeAr: "تنفيذ دقيق لكافة ملاحظاتك وتوجيهاتك.",
+          channelEn: "Channel: Consolidated Notes List",
+          channelAr: "التعديلات: قائمة ملاحظاتك الموحدة",
+          turnaroundEn: "Turnaround: Within 48 Hours",
+          turnaroundAr: "سرعة التنفيذ: خلال 48 ساعة كحد أقصى"
+        },
+        {
+          id: 9,
+          icon: "💰",
+          titleEn: "09. Final Payment — After Your 100% Approval",
+          titleAr: "09. دفع المبلغ المتبقي بعد موافقتك التامة على النتيجة",
+          shortEn: "Final Payment",
+          shortAr: "المتبقي بعد موافقتك",
+          descEn: "You only settle the remaining 70% balance AFTER you have thoroughly reviewed your edit and given your 100% final approval.",
+          descAr: "تدفع المبلغ المتبقي (70%) فقط بعد معاينة الفيديو النهائي والموافقة التامة عليه. رضاك عن مشروعك هو الأساس.",
+          badgeEn: "100% Approval",
+          badgeAr: "بعد موافقتك التامة",
+          guaranteeEn: "Zero risk. You only finalize payment when you love the video.",
+          guaranteeAr: "أمان كامل: لا تدفع الباقي إلا بعد رضاك النهائي عن الفيديو الخاص بك.",
+          channelEn: "Condition: Settle Remaining 70% After Approval",
+          channelAr: "الشرط: دفع الـ 70% المتبقية بعد رضاك التام",
+          turnaroundEn: "Guarantee: 100% Satisfaction",
+          turnaroundAr: "الضمان: راحة بال وأمان كامل لمشروعك"
+        },
+        {
+          id: 10,
+          icon: "🚀",
+          titleEn: "10. Final Delivery — Your Master Video in Pristine Quality",
+          titleAr: "10. التسليم النهائي للفيديو الخاص بك بأعلى جودة",
+          shortEn: "Final Delivery",
+          shortAr: "استلام الفيديو الخاص بك",
+          descEn: "Immediate delivery of your pristine, watermark-free master MP4 video file, expertly encoded and ready for instant publishing.",
+          descAr: "تسليم فوري للملف النهائي الأصلي للفيديو الخاص بك بصيغة MP4 وبدون أي علامة مائية، معالج بأفضل إعدادات وضبط للترميز وجاهز للنشر المباشر.",
+          badgeEn: "Master Quality",
+          badgeAr: "أعلى جودة وترميز",
+          guaranteeEn: "Pristine export perfectly tailored for all platforms, professionally encoded to preserve maximum clarity and prevent social media compression artifacts.",
+          guaranteeAr: "تصدير فائق الجودة متوافق ومثالي لكافة منصاتك، مع مراعاة وضبط احترافي للترميز لضمان أقصى جودة ونقاء للفيديو دون أي ضغط أو تشويش على منصات السوشيال ميديا.",
+          channelEn: "Format: Master MP4 / Cloud Drive",
+          channelAr: "صيغة التسليم: ملف ماستر MP4 بأعلى بت ريت",
+          turnaroundEn: "Turnaround: Instant Lossless Download",
+          turnaroundAr: "السرعة: تحميل فوري ودائم لملفك الأصلي"
+        },
+        {
+          id: 11,
+          icon: "⭐",
+          titleEn: "11. Permission & Feedback — Your Privacy First",
+          titleAr: "11. طلب إذنك وتقييمك لعرض العمل — خصوصيتك أولاً",
+          shortEn: "Permission",
+          shortAr: "طلب إذنك وخصوصيتك",
+          descEn: "I will always ask for your explicit consent before showcasing any portion of your project in my portfolio. Your brand privacy comes first.",
+          descAr: "أطلب إذنك باحترام قبل إضافة أي جزء من مشروعك إلى معرض أعمالي. خصوصيتك وراحتك هي الأولوية دائماً.",
+          badgeEn: "Privacy First",
+          badgeAr: "احترام خصوصيتك",
+          guaranteeEn: "Your footage is never shared anywhere without your prior permission.",
+          guaranteeAr: "لا يتم نشر أي لقطة من مشروعك دون موافقتك الصريحة المسبقة.",
+          channelEn: "Privacy: Explicit Client Consent",
+          channelAr: "الخصوصية: موافقة مسبقة وصريحة منك",
+          turnaroundEn: "Policy: Your Brand Privacy Comes First",
+          turnaroundAr: "المبدأ: خصوصية موادك وحسابك أولوية مطلقة"
+        }
+      ]
+    };
+
+    /**
+     * =========================================================================
+     * 2. BILINGUAL TRANSLATION DICTIONARY (English & Arabic)
+     * =========================================================================
+     */
+    const I18N = {
+      en: {
+        navName: "Mohamed Amine",
+        navRole: "Freelance Video Editor",
+        navWork: "Selected Work",
+        navServices: "What I Edit",
+        navTools: "Tools",
+        navPipeline: "Project Steps",
+        navAbout: "About",
+        navContact: "Contact",
+
+        heroBadge: "FREELANCE VIDEO EDITOR // ALGERIA",
+        heroHeadline: "Crafting clean, modern visuals from your raw footage.",
+        heroSub: "Independent video editor based in Algeria. Helping creators, friends, and emerging brands turn raw clips and ideas into sharp reels, promos, and high-retention content.",
+        heroBtnWork: "View My Work",
+        heroBtnContact: "Let's Work Together",
+
+        workMeta: "// SELECTED PROJECTS",
+        workTitle: "Selected Work",
+        filterAll: "All",
+        filterReels: "Reels & Shorts",
+        filterAds: "Social Ads",
+        filterMotion: "Motion & Demos",
+        workShowMore: "Discover More Work",
+        workShowLess: "Show Less",
+
+        servicesMeta: "// WHAT I EDIT",
+        servicesTitle: "Services & Edits I Deliver",
+
+        toolsMeta: "// ACTUAL SOFTWARE STACK",
+        toolsTitle: "Tools I Actually Use",
+        toolActiveBadge: "ACTIVE",
+        toolComingSoon: "Coming Soon",
+        toolRoleCapcut: "Pacing & Social Reels",
+        toolRoleDavinci: "Color & Advanced Cut",
+        toolRoleFigma: "UI Assets & Layouts",
+        toolRolePs: "Thumbnails & Graphics",
+        toolRoleRive: "Interactive Vector Motion",
+
+        pipelineMeta: "// TRANSPARENT WORKFLOW",
+        pipelineTitle: "Your Project Steps (01 — 11)",
+        autoTourStart: "Start Auto Tour",
+        autoTourStop: "Stop Tour",
+        stepStatusLabel: "Stage Status",
+
+        aboutMeta: "// AUTHENTIC BIO",
+        aboutTitle: "About Me",
+        aboutP1: "I'm Mohamed Amine Djouama, a freelance video editor based in Algeria working on elevating my craft and shaping my distinct visual style.",
+        aboutP2: "I focus on creating modern videos that harmonize rhythm, precise cuts, dynamic motion, and visual identity—prioritizing clarity of message and an exceptional viewer experience.",
+        aboutP3: "I'm actively growing my portfolio through real and experimental projects in collaboration with content creators, friends, and emerging businesses, striving with every timeline to deliver work that surpasses the last.",
+        aboutLocation: "📍 Location: Boumerdès / Algeria",
+        aboutFocus: "🎬 Primary Focus: Social Reels, Motion & Promo Visuals",
+
+        contactMeta: "// LET'S CONNECT",
+        contactTitle: "Have a video in mind?",
+        btnEmailText: "Email",
+        btnWaText: "WhatsApp",
+        btnTgText: "Telegram",
+        btnFbText: "Facebook",
+
+        emailModalTitle: "Send an Email Inquiry",
+        emailModalSub: "Reach Mohamed Amine directly to discuss your project",
+        emailBoxLabel: "Direct Email Address:",
+        copyEmailLabel: "Copy",
+        copySuccess: "Copied! ✓",
+        gmailWebLabel: "Open in Gmail (Web Browser)",
+        defaultMailLabel: "Open in Default Mail App",
+
+        videoModalTitle: "Video Preview",
+        closeModalLabel: "✕ CLOSE",
+
+        footerCopy: "© 2026 Mohamed Amine Djouama. All rights reserved."
+      },
+
+      ar: {
+        navName: "محمد أمين",
+        navRole: "مونتير فيديو مستقل",
+        navWork: "أعمال مختارة",
+        navServices: "خدمات المونتاج",
+        navTools: "البرامج والأدوات",
+        navPipeline: "مسار مشروعك",
+        navAbout: "عني",
+        navContact: "تواصل معي",
+
+        heroBadge: "مونتير فيديو مستقل // الجزائر",
+        heroHeadline: "أحوّل لقطاتك الخام إلى فيديوهات حديثة وجذابة.",
+        heroSub: "مونتير فيديو مستقل من الجزائر، أساعد صناع المحتوى والأصدقاء والمشاريع الناشئة على صناعة ريلز وإعلانات وفيديوهات عرض بأسلوب عصري وإيقاع يشد الانتباه.",
+        heroBtnWork: "شاهد أعمالي",
+        heroBtnContact: "لنعمل معاً",
+
+        workMeta: "// نماذج من أعمالي",
+        workTitle: "أعمال مختارة",
+        filterAll: "الكل",
+        filterReels: "ريلز وشورتس",
+        filterAds: "إعلانات السوشيال",
+        filterMotion: "موشن وشروحات",
+        workShowMore: "اكتشف المزيد من الأعمال",
+        workShowLess: "عرض أقل",
+
+        servicesMeta: "// ما أقوم بمونتاجه",
+        servicesTitle: "الخدمات التي أقدمها",
+
+        toolsMeta: "// البرامج والأدوات الفعلية",
+        toolsTitle: "الأدوات التي أستخدمها فعلاً",
+        toolActiveBadge: "مُتقن حالياً",
+        toolComingSoon: "قريباً",
+        toolRoleCapcut: "تقطيع وإيقاع ريلز",
+        toolRoleDavinci: "تلوين ومونتاج متقدم",
+        toolRoleFigma: "تصميم عناصر وواجهات",
+        toolRolePs: "صور مصغرة وتعديل جرافيك",
+        toolRoleRive: "تحريك فيكتور تفاعلي",
+
+        pipelineMeta: "// مسار عمل شفاف",
+        pipelineTitle: "خطوات تنفيذ مشروعك (01 — 11)",
+        autoTourStart: "بدء الجولة التلقائية",
+        autoTourStop: "إيقاف الجولة",
+        stepStatusLabel: "حالة المرحلة",
+
+        aboutMeta: "// سيرة ذاتية صادقة",
+        aboutTitle: "عني",
+        aboutP1: "أنا محمد أمين جوامع، مونتير فيديو مستقل من الجزائر، أعمل على تطوير مسيرتي المهنية وبناء أسلوبي الخاص في المونتاج.",
+        aboutP2: "أهتم بصناعة فيديوهات عصرية تجمع بين الإيقاع، التقطيع الدقيق، الحركة، والهوية البصرية، مع التركيز على وضوح الفكرة وجودة التجربة البصرية.",
+        aboutP3: "أعمل على تطوير معرض أعمالي من خلال مشاريع حقيقية وتجريبية بالتعاون مع صناع المحتوى، الأصدقاء، والمشاريع المحلية، وأسعى مع كل مشروع إلى تقديم عمل أفضل من السابق.",
+        aboutLocation: "📍 الموقع: بومرداس / الجزائر",
+        aboutFocus: "🎬 التخصص الأساسي: ريلز السوشيال ميديا، الموشن، والإعلانات",
+
+        contactMeta: "// تواصل معي",
+        contactTitle: "هل لديك فكرة فيديو؟",
+        btnEmailText: "الإيميل",
+        btnWaText: "واتساب",
+        btnTgText: "تليجرام",
+        btnFbText: "فيسبوك",
+
+        emailModalTitle: "إرسال رسالة بريد إلكتروني",
+        emailModalSub: "تواصل مع محمد أمين مباشرة لمناقشة فكرة مشروعك",
+        emailBoxLabel: "عنوان البريد الإلكتروني المباشر:",
+        copyEmailLabel: "نسخ",
+        copySuccess: "تم النسخ! ✓",
+        gmailWebLabel: "فتح مباشرة في Gmail (المتصفح)",
+        defaultMailLabel: "فتح في تطبيق البريد الخاص بجهازك",
+
+        videoModalTitle: "معاينة الفيديو",
+        closeModalLabel: "✕ إغلاق",
+
+        footerCopy: "© 2026 محمد أمين جوامع. جميع الحقوق محفوظة."
+      }
+    };
+
+    let currentLang = "en";
+    let isSoundEnabled = true;
+    let autoTourInterval = null;
+    let currentStepIndex = 0;
+    let isDarkMode = true;
+
+    /**
+     * =========================================================================
+     * 3. SYNTHESIZED WEB AUDIO ENGINE & TOUR SOUNDTRACK
+     * =========================================================================
+     */
+    let audioCtx = null;
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playToneSfx(type) {
+      if (!isSoundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        const now = ctx.currentTime;
+
+        if (type === 'click') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(320, now);
+          osc.frequency.exponentialRampToValueAtTime(140, now + 0.05);
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+          osc.start(now);
+          osc.stop(now + 0.05);
+        } else if (type === 'step') {
+          osc.type = 'sine';
+          const baseFreq = 260 + (currentStepIndex * 35);
+          osc.frequency.setValueAtTime(baseFreq, now);
+          osc.frequency.exponentialRampToValueAtTime(baseFreq * 1.5, now + 0.12);
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+          osc.start(now);
+          osc.stop(now + 0.15);
+        } else if (type === 'success') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(440, now);
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.18);
+          gain.gain.setValueAtTime(0.09, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+          osc.start(now);
+          osc.stop(now + 0.2);
+        } else if (type === 'pop') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(640, now);
+          osc.frequency.exponentialRampToValueAtTime(180, now + 0.055);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.065);
+          osc.start(now);
+          osc.stop(now + 0.065);
+        } else if (type === 'pop-soft') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(460, now);
+          osc.frequency.exponentialRampToValueAtTime(160, now + 0.045);
+          gain.gain.setValueAtTime(0.04, now);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.055);
+          osc.start(now);
+          osc.stop(now + 0.055);
+        }
+      } catch (e) {
+        // Audio silently bypassed if restricted
+      }
+    }
+
+    // Upbeat Auto-Tour Background Music Synthesizer (124 BPM Driving Electronic Groove)
+    let tourMusicTimer = null;
+    let tourMusicStep = 0;
+    let tourMusicGain = null;
+    let isTourMusicActive = false;
+
+    function playSynthKick(ctx, dest, time) {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(140, time);
+      osc.frequency.exponentialRampToValueAtTime(36, time + 0.09);
+      gain.gain.setValueAtTime(0.6, time);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + 0.12);
+      osc.connect(gain);
+      gain.connect(dest);
+      osc.start(time);
+      osc.stop(time + 0.12);
+    }
+
+    function playSynthSnare(ctx, dest, time) {
+      const bufferSize = Math.floor(ctx.sampleRate * 0.08);
+      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.02));
+      }
+      const noise = ctx.createBufferSource();
+      noise.buffer = buffer;
+
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'highpass';
+      filter.frequency.value = 1000;
+
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.3, time);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + 0.08);
+
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(dest);
+      noise.start(time);
+    }
+
+    function playSynthHiHat(ctx, dest, time, open = false) {
+      const duration = open ? 0.09 : 0.03;
+      const bufferSize = Math.floor(ctx.sampleRate * duration);
+      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * (open ? 0.03 : 0.008)));
+      }
+      const noise = ctx.createBufferSource();
+      noise.buffer = buffer;
+
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'highpass';
+      filter.frequency.value = 7500;
+
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(open ? 0.22 : 0.12, time);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + duration);
+
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(dest);
+      noise.start(time);
+    }
+
+    function playSynthBass(ctx, dest, time, freq) {
+      const osc = ctx.createOscillator();
+      const filter = ctx.createBiquadFilter();
+      const gain = ctx.createGain();
+
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(freq, time);
+
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(750, time);
+      filter.frequency.exponentialRampToValueAtTime(200, time + 0.1);
+
+      gain.gain.setValueAtTime(0.28, time);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + 0.11);
+
+      osc.connect(filter);
+      filter.connect(gain);
+      gain.connect(dest);
+
+      osc.start(time);
+      osc.stop(time + 0.12);
+    }
+
+    function playSynthLead(ctx, dest, time, freq) {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, time);
+
+      gain.gain.setValueAtTime(0.18, time);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + 0.1);
+
+      osc.connect(gain);
+      gain.connect(dest);
+
+      osc.start(time);
+      osc.stop(time + 0.1);
+    }
+
+    // Melodic notes in D Minor progression
+    const BASS_PITCHES = [73.4, 73.4, 146.8, 73.4, 87.3, 73.4, 98.0, 110.0, 73.4, 73.4, 146.8, 73.4, 130.8, 110.0, 98.0, 87.3];
+    const LEAD_PITCHES = [587.3, 0, 440.0, 523.3, 0, 349.2, 440.0, 0, 587.3, 659.3, 523.3, 0, 440.0, 523.3, 587.3, 0];
+
+    function startTourMusic() {
+      if (!isSoundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+
+        stopTourMusic();
+        isTourMusicActive = true;
+        tourMusicStep = 0;
+
+        tourMusicGain = ctx.createGain();
+        tourMusicGain.gain.setValueAtTime(0.16, ctx.currentTime);
+        tourMusicGain.connect(ctx.destination);
+
+        const stepDuration = 0.122; // ~123 BPM 16th notes
+        let nextNoteTime = ctx.currentTime + 0.05;
+
+        function scheduler() {
+          if (!isTourMusicActive) return;
+          while (nextNoteTime < ctx.currentTime + 0.22) {
+            const step16 = tourMusicStep % 16;
+
+            // 4-on-the-floor Kick
+            if (step16 % 4 === 0) {
+              playSynthKick(ctx, tourMusicGain, nextNoteTime);
+            }
+
+            // Snare on 4 and 12
+            if (step16 === 4 || step16 === 12) {
+              playSynthSnare(ctx, tourMusicGain, nextNoteTime);
+            }
+
+            // Hi-Hats
+            if (step16 % 2 === 0) {
+              playSynthHiHat(ctx, tourMusicGain, nextNoteTime, step16 % 4 === 2);
+            }
+
+            // Driving Bass
+            const bassFreq = BASS_PITCHES[step16];
+            if (bassFreq > 0) {
+              playSynthBass(ctx, tourMusicGain, nextNoteTime, bassFreq);
+            }
+
+            // Upbeat Arpeggio Lead
+            const leadFreq = LEAD_PITCHES[step16];
+            if (leadFreq > 0) {
+              playSynthLead(ctx, tourMusicGain, nextNoteTime, leadFreq);
+            }
+
+            nextNoteTime += stepDuration;
+            tourMusicStep++;
+          }
+          tourMusicTimer = setTimeout(scheduler, 40);
+        }
+
+        scheduler();
+      } catch (err) {
+        console.warn("Audio synthesizer error:", err);
+      }
+    }
+
+    function stopTourMusic() {
+      isTourMusicActive = false;
+      if (tourMusicTimer) {
+        clearTimeout(tourMusicTimer);
+        tourMusicTimer = null;
+      }
+      if (tourMusicGain && audioCtx) {
+        try {
+          tourMusicGain.gain.setValueAtTime(tourMusicGain.gain.value, audioCtx.currentTime);
+          tourMusicGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.08);
+        } catch (e) {}
+      }
+      tourMusicStep = 0;
+    }
+
+    /**
+     * =========================================================================
+     * 4. RENDERING FUNCTIONS
+     * =========================================================================
+     */
+    let isProjectsExpanded = false;
+    let currentProjectFilter = 'all';
+
+    function renderProjects(filter = currentProjectFilter) {
+      currentProjectFilter = filter;
+      const grid = document.getElementById('projects-grid');
+      const toggleContainer = document.getElementById('projects-toggle-container');
+      const toggleText = document.getElementById('toggle-projects-text');
+      const toggleIcon = document.getElementById('toggle-projects-icon');
+      if (!grid) return;
+      grid.innerHTML = '';
+      grid.style.maxHeight = '';
+      grid.style.transition = '';
+
+      const filtered = filter === 'all' 
+        ? CONFIG.projects 
+        : CONFIG.projects.filter(p => p.category === filter || p.secondaryCategory === filter);
+
+      filtered.forEach((p, idx) => {
+        const title = currentLang === 'ar' ? p.titleAr : p.titleEn;
+        const desc = currentLang === 'ar' ? p.descAr : p.descEn;
+        const tools = (currentLang === 'ar' ? (p.toolsAr || p.tools) : (p.toolsEn || p.tools)) || 'CapCut • DaVinci';
+        const badge = (currentLang === 'ar' ? (p.badgeAr || p.badge) : (p.badgeEn || p.badge)) || (currentLang === 'ar' ? 'فيديو' : 'Video');
+        const duration = p.duration || (p.videoSrc ? '00:30' : (currentLang === 'ar' ? 'قريباً' : 'Soon'));
+        const watchText = p.videoSrc
+          ? (currentLang === 'ar' ? 'اضغط هنا للمشاهدة' : 'Click here to watch')
+          : (currentLang === 'ar' ? 'قيد التجهيز' : 'Coming Soon');
+
+        const card = document.createElement('div');
+        const isHiddenByDefault = idx >= 3 && !isProjectsExpanded;
+        card.className = `glass-card rounded-2xl overflow-hidden border border-white/5 flex flex-col group cursor-pointer ${
+          isHiddenByDefault ? 'hidden' : ''
+        }`;
+        card.dataset.projectIndex = idx;
+
+        const bgLayer = p.videoSrc
+          ? `<video src="${p.videoSrc}#t=0.5" preload="metadata" class="absolute inset-0 w-full h-full object-cover filter blur-md scale-110 opacity-40 pointer-events-none"></video>`
+          : `<div class="absolute inset-0 bg-gradient-to-br ${p.previewColor} filter blur-sm opacity-50"></div>`;
+
+        const mediaHtml = `
+          <div class="relative aspect-video bg-slate-900 flex items-center justify-center overflow-hidden">
+            <!-- Blurred background preview -->
+            ${bgLayer}
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 scanlines opacity-25"></div>
+
+            <span class="absolute top-3 left-3 rtl:left-auto rtl:right-3 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-[10px] font-mono text-indigo-300 border border-white/10 z-10 pointer-events-none">
+              ${badge}
+            </span>
+
+            <!-- Center Call to Action -->
+            <div class="relative z-10 flex flex-col items-center gap-2 transition-transform duration-300 group-hover:scale-105">
+              <div class="w-12 h-12 rounded-full bg-indigo-600/90 group-hover:bg-indigo-500 text-white flex items-center justify-center shadow-glow-indigo transition-all">
+                <svg class="w-5 h-5 fill-current ml-0.5 rtl:ml-0 rtl:mr-0.5" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-[11px] font-medium text-white border border-white/20 shadow-lg tracking-wide">
+                ${watchText}
+              </span>
+            </div>
+
+            <div class="absolute bottom-2 right-2 rtl:right-auto rtl:left-2 text-[10px] font-mono text-slate-300 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded z-10">
+              ${duration}
+            </div>
+          </div>
+        `;
+
+        card.innerHTML = `
+          ${mediaHtml}
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-bold text-white group-hover:text-indigo-400 transition-colors mb-2">${title}</h3>
+              <p class="text-xs text-slate-400 leading-relaxed mb-4">${desc}</p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-white/5 text-[11px] font-mono text-slate-500">
+              <span>${tools}</span>
+              <span class="text-indigo-400 flex items-center gap-1 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                ${p.videoSrc ? (currentLang === 'ar' ? 'معاينة ←' : 'Preview →') : (currentLang === 'ar' ? 'التفاصيل ←' : 'Details →')}
+              </span>
+            </div>
+          </div>
+        `;
+
+        card.addEventListener('click', () => {
+          playToneSfx('click');
+          openVideoModal(p);
+        });
+
+        grid.appendChild(card);
+      });
+
+      // Update Toggle Button Visibility & Text
+      if (toggleContainer) {
+        if (filtered.length > 3) {
+          toggleContainer.classList.remove('hidden');
+          const dict = I18N[currentLang];
+          if (toggleText) {
+            toggleText.textContent = isProjectsExpanded ? dict.workShowLess : dict.workShowMore;
+          }
+          if (toggleIcon) {
+            if (isProjectsExpanded) {
+              toggleIcon.classList.add('rotate-180');
+            } else {
+              toggleIcon.classList.remove('rotate-180');
+            }
+          }
+        } else {
+          toggleContainer.classList.add('hidden');
+        }
+      }
+    }
+
+    function toggleMoreProjects() {
+      const grid = document.getElementById('projects-grid');
+      const toggleText = document.getElementById('toggle-projects-text');
+      const toggleIcon = document.getElementById('toggle-projects-icon');
+      if (!grid) return;
+
+      const dict = I18N[currentLang];
+      const allCards = Array.from(grid.querySelectorAll('.glass-card'));
+      const extraCards = allCards.slice(3);
+      if (extraCards.length === 0) return;
+
+      isProjectsExpanded = !isProjectsExpanded;
+
+      if (isProjectsExpanded) {
+        // Pop sound effect exactly at the start of appearance
+        playToneSfx('pop');
+
+        if (toggleIcon) toggleIcon.classList.add('rotate-180');
+
+        // Measure starting height of grid
+        const initialHeight = grid.getBoundingClientRect().height;
+
+        // Make extra cards visible and set staggered animation delays (100ms gap)
+        extraCards.forEach((card, idx) => {
+          card.classList.remove('hidden');
+          card.classList.remove('animate-project-out');
+          card.classList.remove('animate-project-in');
+          card.style.animationDelay = `${idx * 100}ms`;
+        });
+
+        const targetHeight = grid.scrollHeight;
+
+        // Smooth height expansion
+        grid.style.maxHeight = `${initialHeight}px`;
+        void grid.offsetHeight; // Force reflow
+        grid.style.transition = 'max-height 0.65s cubic-bezier(0.16, 1, 0.3, 1)';
+        grid.style.maxHeight = `${targetHeight}px`;
+
+        // Start staggered entrance animations (100ms gap)
+        extraCards.forEach(card => {
+          void card.offsetWidth;
+          card.classList.add('animate-project-in');
+        });
+
+        // After all animations complete: update button text to "عرض أقل" and unlock height
+        const totalDuration = (extraCards.length - 1) * 100 + 450;
+        setTimeout(() => {
+          if (isProjectsExpanded) {
+            if (toggleText) toggleText.textContent = dict.workShowLess;
+            grid.style.maxHeight = 'none';
+          }
+        }, totalDuration);
+
+      } else {
+        // Soft pop sound on collapse
+        playToneSfx('pop-soft');
+
+        // Immediately update text and icon for collapse feedback
+        if (toggleText) toggleText.textContent = dict.workShowMore;
+        if (toggleIcon) toggleIcon.classList.remove('rotate-180');
+
+        // Fix current height for animation
+        const currentHeight = grid.getBoundingClientRect().height;
+        grid.style.maxHeight = `${currentHeight}px`;
+        void grid.offsetHeight; // Force reflow
+
+        // Calculate height of the first 3 visible cards
+        const firstThreeCards = allCards.slice(0, 3);
+        const lastOfFirstThree = firstThreeCards[firstThreeCards.length - 1];
+        const gridRect = grid.getBoundingClientRect();
+        const lastCardRect = lastOfFirstThree.getBoundingClientRect();
+        const collapsedHeight = Math.ceil(lastCardRect.bottom - gridRect.top);
+
+        // Reverse staggered fade & slide down
+        const totalExtra = extraCards.length;
+        extraCards.forEach((card, idx) => {
+          card.classList.remove('animate-project-in');
+          card.classList.remove('animate-project-out');
+          const reverseDelay = (totalExtra - 1 - idx) * 60;
+          card.style.animationDelay = `${reverseDelay}ms`;
+          void card.offsetWidth;
+          card.classList.add('animate-project-out');
+        });
+
+        // Animate height collapse
+        grid.style.transition = 'max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+        grid.style.maxHeight = `${collapsedHeight}px`;
+
+        const collapseDuration = (totalExtra - 1) * 60 + 260;
+        setTimeout(() => {
+          if (!isProjectsExpanded) {
+            extraCards.forEach(card => {
+              card.classList.add('hidden');
+              card.classList.remove('animate-project-out');
+              card.style.animationDelay = '';
+            });
+            grid.style.maxHeight = '';
+            grid.style.transition = '';
+
+            // Smooth scroll back to Selected Work header
+            const workSection = document.getElementById('work');
+            if (workSection) {
+              const yOffset = -70;
+              const y = workSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          }
+        }, collapseDuration);
+      }
+    }
+
+    function renderServices() {
+      const grid = document.getElementById('services-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      CONFIG.services.forEach((s, idx) => {
+        const title = currentLang === 'ar' ? s.titleAr : s.titleEn;
+        const desc = currentLang === 'ar' ? s.descAr : s.descEn;
+
+        const el = document.createElement('div');
+        el.className = "glass-card rounded-xl p-5 border border-white/5 flex flex-col justify-between";
+        el.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-2xl">${s.icon}</span>
+              <span class="text-[10px] font-mono text-slate-500">0${idx + 1}</span>
+            </div>
+            <h3 class="text-sm font-bold text-white mb-1.5">${title}</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">${desc}</p>
+          </div>
+          <div class="mt-4 pt-2 flex items-center justify-end">
+            <span class="w-1.5 h-1.5 rounded-full bg-indigo-500/40"></span>
+          </div>
+        `;
+        grid.appendChild(el);
+      });
+    }
+
+    function renderPipelineButtons() {
+      const row = document.getElementById('step-selector-row');
+      if (!row) return;
+      row.innerHTML = '';
+
+      CONFIG.pipelineSteps.forEach((step, idx) => {
+        const title = currentLang === 'ar' ? step.shortAr : step.shortEn;
+        const btn = document.createElement('button');
+        btn.id = `step-btn-${idx}`;
+        const isActive = idx === currentStepIndex;
+
+        btn.className = `px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-2 flex-shrink-0 ${
+          isActive 
+            ? 'bg-indigo-600 text-white shadow-glow-indigo' 
+            : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white border border-white/5'
+        }`;
+
+        btn.innerHTML = `<span>${step.icon}</span><span>${title}</span>`;
+        btn.addEventListener('click', () => {
+          stopAutoTour();
+          setWorkflowStep(idx, true);
+          playToneSfx('step');
+        });
+
+        row.appendChild(btn);
+      });
+    }
+
+    function setWorkflowStep(index, shouldScrollHorizontal = false) {
+      currentStepIndex = index;
+      const step = CONFIG.pipelineSteps[index];
+      const total = CONFIG.pipelineSteps.length;
+
+      // Update Buttons UI
+      for (let i = 0; i < total; i++) {
+        const btn = document.getElementById(`step-btn-${i}`);
+        if (btn) {
+          if (i === index) {
+            btn.className = "px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-2 flex-shrink-0 bg-indigo-600 text-white shadow-glow-indigo";
+            if (shouldScrollHorizontal) {
+              const row = document.getElementById('step-selector-row');
+              if (row) {
+                const targetLeft = btn.offsetLeft - row.offsetWidth / 2 + btn.offsetWidth / 2;
+                row.scrollTo({ left: targetLeft, behavior: 'smooth' });
+              }
+            }
+          } else {
+            btn.className = "px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-2 flex-shrink-0 bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white border border-white/5";
+          }
+        }
+      }
+
+      // Progress bar percentage calculation
+      const pct = Math.round(((index + 1) / total) * 100);
+      const progressBar = document.getElementById('pipeline-progress-bar');
+      const progressTxt = document.getElementById('pipeline-percent');
+      const stepIndicator = document.getElementById('pipeline-step-indicator');
+
+      if (progressBar) progressBar.style.width = `${pct}%`;
+      if (progressTxt) progressTxt.textContent = currentLang === 'ar' ? `${pct}% مُكتمل` : `${pct}% COMPLETE`;
+      
+      const stepNumStr = String(step.id).padStart(2, '0');
+      const shortName = currentLang === 'ar' ? step.shortAr : step.shortEn;
+      if (stepIndicator) {
+        stepIndicator.textContent = currentLang === 'ar' 
+          ? `المرحلة ${stepNumStr} من 11: ${shortName}` 
+          : `Step ${stepNumStr} of 11: ${shortName}`;
+      }
+
+      // Card Content
+      const stepBadge = document.getElementById('step-badge');
+      const stepTitle = document.getElementById('step-title');
+      const stepDesc = document.getElementById('step-description');
+      const stepGzBadge = document.getElementById('step-guarantee-badge');
+      const stepGzText = document.getElementById('step-guarantee-text');
+      const stepStatusLabel = document.getElementById('step-status-label');
+      const metaChannel = document.getElementById('step-meta-channel');
+      const metaTurnaround = document.getElementById('step-meta-turnaround');
+
+      if (stepBadge) stepBadge.textContent = currentLang === 'ar' ? `المرحلة ${stepNumStr} // 11` : `STEP ${stepNumStr} // 11`;
+      if (stepTitle) stepTitle.textContent = currentLang === 'ar' ? step.titleAr : step.titleEn;
+      if (stepDesc) stepDesc.textContent = currentLang === 'ar' ? step.descAr : step.descEn;
+      if (stepGzBadge) stepGzBadge.textContent = currentLang === 'ar' ? step.badgeAr : step.badgeEn;
+      if (stepGzText) stepGzText.textContent = currentLang === 'ar' ? step.guaranteeAr : step.guaranteeEn;
+      if (stepStatusLabel) stepStatusLabel.textContent = currentLang === 'ar' ? 'حالة المرحلة' : 'Stage Status';
+      if (metaChannel) metaChannel.textContent = currentLang === 'ar' ? step.channelAr : step.channelEn;
+      if (metaTurnaround) metaTurnaround.textContent = currentLang === 'ar' ? step.turnaroundAr : step.turnaroundEn;
+    }
+
+    function toggleAutoTour() {
+      if (autoTourInterval) {
+        stopAutoTour();
+      } else {
+        startAutoTour();
+      }
+    }
+
+    function startAutoTour() {
+      const tourText = document.getElementById('auto-tour-text');
+      if (tourText) tourText.textContent = I18N[currentLang].autoTourStop;
+      playToneSfx('step');
+      startTourMusic();
+
+      autoTourInterval = setInterval(() => {
+        let nextIndex = (currentStepIndex + 1) % CONFIG.pipelineSteps.length;
+        setWorkflowStep(nextIndex, true);
+        playToneSfx('step');
+      }, 3200);
+    }
+
+    function stopAutoTour() {
+      if (autoTourInterval) {
+        clearInterval(autoTourInterval);
+        autoTourInterval = null;
+      }
+      stopTourMusic();
+      const tourText = document.getElementById('auto-tour-text');
+      if (tourText) tourText.textContent = I18N[currentLang].autoTourStart;
+    }
+
+    /**
+     * =========================================================================
+     * 5. THEME TOGGLE (Dark / Light Mode)
+     * =========================================================================
+     */
+    function toggleTheme() {
+      const html = document.documentElement;
+      const sunIcon = document.getElementById('theme-icon-sun');
+      const moonIcon = document.getElementById('theme-icon-moon');
+
+      isDarkMode = !isDarkMode;
+      if (isDarkMode) {
+        html.classList.add('dark');
+        if (sunIcon) sunIcon.classList.remove('hidden');
+        if (moonIcon) moonIcon.classList.add('hidden');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        html.classList.remove('dark');
+        if (sunIcon) sunIcon.classList.add('hidden');
+        if (moonIcon) moonIcon.classList.remove('hidden');
+        localStorage.setItem('theme', 'light');
+      }
+      playToneSfx('click');
+    }
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        isDarkMode = false;
+        document.documentElement.classList.remove('dark');
+        const sunIcon = document.getElementById('theme-icon-sun');
+        const moonIcon = document.getElementById('theme-icon-moon');
+        if (sunIcon) sunIcon.classList.add('hidden');
+        if (moonIcon) moonIcon.classList.remove('hidden');
+      }
+    }
+
+    /**
+     * =========================================================================
+     * 6. LANGUAGE SWITCHER (EN / AR)
+     * =========================================================================
+     */
+    function safeSetText(id, text) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    }
+
+    function safeSetChildText(id, selector, text) {
+      const el = document.getElementById(id);
+      if (el) {
+        const target = selector ? el.querySelector(selector) : el;
+        if (target) target.textContent = text;
+      }
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('site_lang', lang);
+      const html = document.documentElement;
+      const dict = I18N[lang];
+
+      if (lang === 'ar') {
+        html.setAttribute('dir', 'rtl');
+        html.setAttribute('lang', 'ar');
+        safeSetText('lang-label', 'English');
+        document.title = "محمد أمين جوامع — مونتير فيديو مستقل";
+      } else {
+        html.setAttribute('dir', 'ltr');
+        html.setAttribute('lang', 'en');
+        safeSetText('lang-label', 'العربية');
+        document.title = "Mohamed Amine Djouama — Freelance Video Editor";
+      }
+
+      // Update Nav
+      const navPerson = document.getElementById('nav-person-name');
+      if (navPerson) {
+        navPerson.innerHTML = `${dict.navName} <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>`;
+      }
+      safeSetText('nav-role-badge', dict.navRole);
+      safeSetText('nav-link-work', dict.navWork);
+      safeSetText('nav-link-services', dict.navServices);
+      safeSetText('nav-link-tools', dict.navTools);
+      safeSetText('nav-link-pipeline', dict.navPipeline);
+      safeSetText('nav-link-about', dict.navAbout);
+      safeSetText('nav-link-contact', dict.navContact);
+
+      // Update Hero
+      safeSetText('hero-badge-text', dict.heroBadge);
+      safeSetText('hero-headline', dict.heroHeadline);
+      safeSetText('hero-subheadline', dict.heroSub);
+      safeSetChildText('hero-btn-work', 'span', dict.heroBtnWork);
+      safeSetChildText('hero-btn-contact', 'span', dict.heroBtnContact);
+
+      // Update Work Section
+      safeSetText('work-meta', dict.workMeta);
+      safeSetText('work-title', dict.workTitle);
+      safeSetText('filter-btn-all', dict.filterAll);
+      safeSetText('filter-btn-reels', dict.filterReels);
+      safeSetText('filter-btn-ads', dict.filterAds);
+      safeSetText('filter-btn-motion', dict.filterMotion);
+      safeSetText('toggle-projects-text', isProjectsExpanded ? dict.workShowLess : dict.workShowMore);
+
+      // Update Services Section
+      safeSetText('services-meta', dict.servicesMeta);
+      safeSetText('services-title', dict.servicesTitle);
+
+      // Update Tools Section
+      safeSetText('tools-meta', dict.toolsMeta);
+      safeSetText('tools-title', dict.toolsTitle);
+      safeSetText('tool-status-capcut', dict.toolActiveBadge);
+      safeSetText('tool-status-davinci', dict.toolActiveBadge);
+      safeSetText('tool-status-figma', dict.toolActiveBadge);
+      safeSetText('tool-status-ps', dict.toolActiveBadge);
+      safeSetText('tool-status-rive', dict.toolActiveBadge);
+      safeSetText('tool-role-capcut', dict.toolRoleCapcut);
+      safeSetText('tool-role-davinci', dict.toolRoleDavinci);
+      safeSetText('tool-role-figma', dict.toolRoleFigma);
+      safeSetText('tool-role-ps', dict.toolRolePs);
+      safeSetText('tool-role-rive', dict.toolRoleRive);
+
+      // Update Coming soon tags
+      document.querySelectorAll('.tool-coming-soon').forEach(el => {
+        el.textContent = dict.toolComingSoon;
+      });
+
+      // Update Pipeline Section
+      safeSetText('pipeline-meta', dict.pipelineMeta);
+      safeSetText('pipeline-title', dict.pipelineTitle);
+      safeSetText('step-status-label', dict.stepStatusLabel);
+      const tourText = document.getElementById('auto-tour-text');
+      if (tourText) tourText.textContent = autoTourInterval ? dict.autoTourStop : dict.autoTourStart;
+
+      // Update About Section
+      safeSetText('about-meta', dict.aboutMeta);
+      safeSetText('about-title', dict.aboutTitle);
+      safeSetText('about-p1', dict.aboutP1);
+      safeSetText('about-p2', dict.aboutP2);
+      safeSetText('about-p3', dict.aboutP3);
+      safeSetText('about-location', dict.aboutLocation);
+      safeSetText('about-focus', dict.aboutFocus);
+
+      // Update Contact Section
+      safeSetText('contact-meta', dict.contactMeta);
+      safeSetText('contact-title', dict.contactTitle);
+      safeSetText('btn-wa-text', dict.btnWaText);
+      safeSetText('btn-tg-text', dict.btnTgText);
+      safeSetText('btn-fb-text', dict.btnFbText);
+      safeSetText('btn-email-text', dict.btnEmailText);
+
+      // Update Email Modal
+      safeSetText('email-modal-title', dict.emailModalTitle);
+      safeSetText('email-modal-sub', dict.emailModalSub);
+      safeSetText('email-box-label', dict.emailBoxLabel);
+      safeSetText('copy-email-label', dict.copyEmailLabel);
+      safeSetText('gmail-web-label', dict.gmailWebLabel);
+      safeSetText('default-mail-label', dict.defaultMailLabel);
+
+      // Dynamic WhatsApp Message
+      const waBtn = document.getElementById('btn-wa');
+      if (waBtn) {
+        const waMsg = lang === 'ar'
+          ? "مرحباً محمد، شاهدت معرض أعمالك وأرغب في مناقشة مشروع فيديو معك."
+          : "Hello Mohamed, I saw your portfolio and would like to discuss a video project.";
+        waBtn.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(waMsg)}`;
+      }
+
+      // Video Modal UI
+      safeSetText('modal-project-title', dict.videoModalTitle);
+      safeSetText('close-video-modal', dict.closeModalLabel);
+      if (currentActiveModalProject) {
+        const modal = document.getElementById('video-modal');
+        if (modal && !modal.classList.contains('hidden')) {
+          renderModalInfo(currentActiveModalProject);
+        }
+      }
+
+      // Footer
+      safeSetText('footer-copy', dict.footerCopy);
+
+      // Re-render Dynamic components
+      renderProjects();
+      renderServices();
+      renderPipelineButtons();
+      setWorkflowStep(currentStepIndex);
+    }
+
+    /**
+     * =========================================================================
+     * 7. MODALS MANAGEMENT
+     * =========================================================================
+     */
+    let currentActiveModalProject = null;
+
+    function renderModalInfo(p) {
+      const infoContainer = document.getElementById('modal-info-container');
+      const titleEl = document.getElementById('modal-project-title');
+      if (!infoContainer) return;
+
+      const title = currentLang === 'ar' ? (p.titleAr || '') : (p.titleEn || '');
+      const desc = currentLang === 'ar' ? (p.descAr || '') : (p.descEn || '');
+      const tools = (currentLang === 'ar' ? (p.toolsAr || p.tools) : (p.toolsEn || p.tools)) || 'CapCut • DaVinci';
+      const duration = p.duration || '00:30';
+      const badge = (currentLang === 'ar' ? (p.badgeAr || p.badge) : (p.badgeEn || p.badge)) || (currentLang === 'ar' ? 'فيديو' : 'Video');
+      const categoryName = (currentLang === 'ar' ? (p.categoryNameAr || p.categoryAr) : (p.categoryNameEn || p.categoryEn)) || (
+        currentLang === 'ar'
+          ? (p.category === 'ads' ? 'إعلانات السوشيال ميديا' : p.category === 'reels' ? 'ريلز وشورتس' : 'موشن وعروض توضيحية')
+          : (p.category === 'ads' ? 'Social Media Ads' : p.category === 'reels' ? 'Reels & Shorts' : 'Motion & Demos')
+      );
+
+      const isVertical = (p.aspectRatioEn && p.aspectRatioEn.includes('9:16')) || (p.badge && p.badge.includes('9:16')) || p.category === 'reels' || p.id === 'proj-gemini-pro';
+      const defaultRatio = isVertical
+        ? (currentLang === 'ar' ? '9:16 (عمودي)' : '9:16 (Vertical)')
+        : (currentLang === 'ar' ? '16:9 (أفقي)' : '16:9 (Horizontal)');
+      const ratio = currentLang === 'ar' ? (p.aspectRatioAr || defaultRatio) : (p.aspectRatioEn || defaultRatio);
+      const publishDate = (currentLang === 'ar' ? p.publishDateAr : p.publishDateEn) || (currentLang === 'ar' ? '10/10/2026' : '10/10/2026');
+
+      if (titleEl) titleEl.textContent = title;
+
+      infoContainer.innerHTML = `
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <div>
+            <span class="text-[10px] font-mono text-indigo-400 tracking-wider uppercase block mb-0.5">
+              // ${currentLang === 'ar' ? 'معلومات وتصنيفات الفيديو' : 'VIDEO METADATA & SPECS'}
+            </span>
+            <h3 class="text-base sm:text-lg font-bold text-white">${title}</h3>
+          </div>
+          <span class="px-3 py-1 rounded-md bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 text-xs font-mono">
+            ${badge}
+          </span>
+        </div>
+
+        ${desc ? `<p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">${desc}</p>` : ''}
+
+        <!-- Metadata & Classifications Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-3 border-t border-white/10 text-xs">
+          <div class="glass-panel rounded-xl p-3 flex flex-col gap-1">
+            <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span>📁</span> ${currentLang === 'ar' ? 'التصنيف' : 'Category'}
+            </span>
+            <span class="font-semibold text-white text-xs sm:text-sm truncate">${categoryName}</span>
+          </div>
+
+          <div class="glass-panel rounded-xl p-3 flex flex-col gap-1">
+            <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span>🛠️</span> ${currentLang === 'ar' ? 'الأدوات المستخدمة' : 'Tools Used'}
+            </span>
+            <span class="font-semibold text-indigo-300 text-xs sm:text-sm truncate">${tools}</span>
+          </div>
+
+          <div class="glass-panel rounded-xl p-3 flex flex-col gap-1">
+            <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span>📐</span> ${currentLang === 'ar' ? 'المقاس والمدة' : 'Ratio & Duration'}
+            </span>
+            <span class="font-semibold text-white text-xs sm:text-sm truncate">${ratio} • ${duration}</span>
+          </div>
+
+          <div class="glass-panel rounded-xl p-3 flex flex-col gap-1 border border-indigo-500/20 bg-indigo-950/25">
+            <span class="text-[10px] font-mono text-indigo-400 uppercase tracking-wider flex items-center gap-1.5">
+              <span>📅</span> ${currentLang === 'ar' ? 'تاريخ النشر' : 'Publish Date'}
+            </span>
+            <span class="font-semibold text-emerald-400 text-xs sm:text-sm font-mono truncate">
+              ${publishDate}
+            </span>
+          </div>
+        </div>
+      `;
+    }
+
+    function openVideoModal(projectOrTitle) {
+      const modal = document.getElementById('video-modal');
+      const titleEl = document.getElementById('modal-project-title');
+      const playerContainer = document.getElementById('modal-player-container');
+
+      const isObj = typeof projectOrTitle === 'object' && projectOrTitle !== null;
+      const p = isObj 
+        ? projectOrTitle 
+        : (CONFIG.projects.find(proj => proj.titleEn === projectOrTitle || proj.titleAr === projectOrTitle) || { titleEn: projectOrTitle, titleAr: projectOrTitle });
+
+      currentActiveModalProject = p;
+      const title = currentLang === 'ar' ? (p.titleAr || projectOrTitle) : (p.titleEn || projectOrTitle);
+
+      if (titleEl) titleEl.textContent = title;
+
+      if (playerContainer) {
+        if (p.videoSrc) {
+          playerContainer.innerHTML = `
+            <video controls autoplay playsinline class="max-h-[58vh] max-w-full w-auto h-auto rounded-xl shadow-2xl object-contain mx-auto border border-white/10 bg-black">
+              <source src="${p.videoSrc}" type="video/mp4">
+              ${currentLang === 'ar' ? 'متصفحك لا يدعم تشغيل الفيديو.' : 'Your browser does not support HTML5 video.'}
+            </video>
+          `;
+        } else {
+          playerContainer.innerHTML = `
+            <div class="text-center p-8">
+              <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4 text-indigo-400">
+                <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <h4 class="text-base sm:text-lg font-bold text-white mb-2">${title}</h4>
+              <p class="text-xs text-slate-400 max-w-sm mx-auto mb-4">
+                ${currentLang === 'ar' 
+                  ? 'لا يتوفر فيديو حالياً، وفي حال توفره سيتم نشره واستعراضه هنا مباشرة.' 
+                  : 'No video currently available. It will be published and showcased here once ready.'}
+              </p>
+              <span class="inline-block px-3 py-1 rounded-md bg-indigo-500/20 text-indigo-300 text-xs font-mono">
+                ${currentLang === 'ar' ? 'قيد التجهيز' : 'Coming Soon'}
+              </span>
+            </div>
+          `;
+        }
+      }
+
+      renderModalInfo(p);
+      modal.classList.remove('hidden');
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('video-modal');
+      const playerContainer = document.getElementById('modal-player-container');
+      const infoContainer = document.getElementById('modal-info-container');
+      currentActiveModalProject = null;
+      if (playerContainer) {
+        const vid = playerContainer.querySelector('video');
+        if (vid) {
+          vid.pause();
+          vid.currentTime = 0;
+        }
+        playerContainer.innerHTML = '';
+      }
+      if (infoContainer) {
+        infoContainer.innerHTML = '';
+      }
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function openEmailModal() {
+      const modal = document.getElementById('email-modal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeEmailModal() {
+      const modal = document.getElementById('email-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function copyEmailToClipboard() {
+      const email = CONFIG.email;
+      const copyLabel = document.getElementById('copy-email-label');
+      const successText = I18N[currentLang].copySuccess;
+      const originalText = I18N[currentLang].copyEmailLabel;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(() => {
+          playToneSfx('success');
+          if (copyLabel) {
+            copyLabel.textContent = successText;
+            setTimeout(() => { copyLabel.textContent = originalText; }, 2500);
+          }
+        }).catch(() => {
+          fallbackCopy(email, copyLabel, successText, originalText);
+        });
+      } else {
+        fallbackCopy(email, copyLabel, successText, originalText);
+      }
+    }
+
+    function fallbackCopy(text, labelEl, successText, originalText) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      playToneSfx('success');
+      if (labelEl) {
+        labelEl.textContent = successText;
+        setTimeout(() => { labelEl.textContent = originalText; }, 2500);
+      }
+    }
+
+    /**
+     * =========================================================================
+     * 8. EVENT LISTENERS INITIALIZATION
+     * =========================================================================
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+      // Theme Toggle Event
+      const themeBtn = document.getElementById('theme-toggle-btn');
+      if (themeBtn) {
+        themeBtn.addEventListener('click', toggleTheme);
+      }
+      initTheme();
+
+      // Language Switcher Event
+      const langBtn = document.getElementById('lang-switch-btn');
+      if (langBtn) {
+        langBtn.addEventListener('click', () => {
+          playToneSfx('click');
+          setLanguage(currentLang === 'en' ? 'ar' : 'en');
+        });
+      }
+
+      // Sound Toggle Event
+      const soundBtn = document.getElementById('sound-toggle-btn');
+      const soundOn = document.getElementById('sound-icon-on');
+      const soundOff = document.getElementById('sound-icon-off');
+
+      if (soundBtn) {
+        soundBtn.addEventListener('click', () => {
+          isSoundEnabled = !isSoundEnabled;
+          if (isSoundEnabled) {
+            soundOn.classList.remove('hidden');
+            soundOff.classList.add('hidden');
+            playToneSfx('click');
+          } else {
+            soundOn.classList.add('hidden');
+            soundOff.classList.remove('hidden');
+            stopAutoTour();
+            stopTourMusic();
+          }
+        });
+      }
+
+      // Filter Buttons
+      const filterPills = document.querySelectorAll('.filter-pill');
+      filterPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          playToneSfx('click');
+          filterPills.forEach(p => {
+            p.className = "filter-pill px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all bg-white/5 hover:bg-white/10 text-slate-300";
+          });
+          pill.className = "filter-pill px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all bg-indigo-600 text-white";
+          isProjectsExpanded = false;
+          renderProjects(pill.getAttribute('data-filter'));
+        });
+      });
+
+      // Toggle More Projects Button
+      const toggleMoreBtn = document.getElementById('toggle-more-projects-btn');
+      if (toggleMoreBtn) {
+        toggleMoreBtn.addEventListener('click', toggleMoreProjects);
+      }
+
+      // Auto Tour Button
+      const autoTourBtn = document.getElementById('auto-tour-btn');
+      if (autoTourBtn) {
+        autoTourBtn.addEventListener('click', () => {
+          playToneSfx('click');
+          toggleAutoTour();
+        });
+      }
+
+      // Video Modal Events
+      const closeVideoBtn = document.getElementById('close-video-modal');
+      const videoModal = document.getElementById('video-modal');
+      if (closeVideoBtn) closeVideoBtn.addEventListener('click', () => { playToneSfx('click'); closeVideoModal(); });
+      if (videoModal) {
+        videoModal.addEventListener('click', (e) => {
+          if (e.target === videoModal) closeVideoModal();
+        });
+      }
+
+      // Email Modal Events
+      const emailBtn = document.getElementById('btn-email-modal');
+      const closeEmailBtn = document.getElementById('close-email-modal');
+      const emailModal = document.getElementById('email-modal');
+      const copyEmailBtn = document.getElementById('copy-email-btn');
+
+      if (emailBtn) {
+        emailBtn.addEventListener('click', () => {
+          playToneSfx('click');
+          openEmailModal();
+        });
+      }
+      if (closeEmailBtn) {
+        closeEmailBtn.addEventListener('click', () => {
+          playToneSfx('click');
+          closeEmailModal();
+        });
+      }
+      if (emailModal) {
+        emailModal.addEventListener('click', (e) => {
+          if (e.target === emailModal) closeEmailModal();
+        });
+      }
+      if (copyEmailBtn) {
+        copyEmailBtn.addEventListener('click', () => {
+          copyEmailToClipboard();
+        });
+      }
+
+      // Initialize view (default to Arabic or saved choice)
+      const savedLang = localStorage.getItem('site_lang') || 'ar';
+      setLanguage(savedLang);
+
+      // Ensure page always starts at the top (Hero section) on initial load / refresh
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    });
+  </script>
+
+</body>
+</html>
